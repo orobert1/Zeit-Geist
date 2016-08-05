@@ -1,0 +1,67 @@
+const React = require('react');
+const ReactDOM = require('react-dom');
+const CurrentUserStore = require('../stores/current_user_store');
+const SessionActions = require('../actions/sessionActions');
+const LinkToLogOut = require('./link_to_logout');
+const LinkToLogin = require('./link_to_login');
+const Link = require('react-router').Link;
+
+module.exports = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
+  getInitialState(){
+    return({logged_in: CurrentUserStore.logged_in()});
+  },
+  componentDidMount(){
+    CurrentUserStore.addListener(this._change);
+    SessionActions.checkCurrentUser();
+    console.log("mounted");
+
+
+  },
+  _change(){
+    this.setState({logged_in: CurrentUserStore.logged_in()});
+  },
+  determineButton(){
+    if(this.state.logged_in){
+      return (
+        <div className="header-dropdown">
+          <p className="header-droppdow-inner-text"></p>
+          <ul className="hidden-dropdown">
+            <li>
+              <Link to={"/profile/"+CurrentUserStore.current_user().id}>Profile</Link>
+            </li>
+            <li>
+              <LinkToLogOut/>
+            </li>
+          </ul>
+        </div>
+      );
+    }else if(this.context.router.isActive('/login')){
+       return (<div></div>);
+    }else{
+      return (<LinkToLogin/>);
+    }
+  },
+
+  createProject(){
+    this.context.router.push('/create_new_project');
+  },
+
+  render(){
+
+    let logInButton = this.determineButton();
+
+    return(
+    <div className="header">
+      <Link to={"/index"} className="logo"></Link>
+      {logInButton}
+      <nav className="nav-wrap">
+      <button className="new-project" onClick={this.createProject}>Create New Project</button>
+      </nav>
+
+    </div>
+    );
+  }
+});

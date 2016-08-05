@@ -1,0 +1,3 @@
+Capstone so far: https://zeit-geist.herokuapp.com/#/?_k=t59lqe
+
+The auth stuff is there and working, it is just hidden under the nav bar
