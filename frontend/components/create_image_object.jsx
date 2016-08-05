@@ -1,10 +1,12 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const ImageStore = require('../stores/image_store');
+const ContentStore = require('../stores/content_store');
 
 module.exports = React.createClass({
   getInitialState(){
       return ({image: null, imageUrl: null});
+  },
+  componentDidMount(){
   },
   getImage(e){
     var image = e.currentTarget.files[0];
@@ -19,18 +21,28 @@ module.exports = React.createClass({
     }
   },
   addtoImageStore(){
-    ImageStore.addImage({url: this.state.imageUrl,image: this.state.image, type: "image"});
+    ContentStore.addImage({id: this.props.id, url: this.state.imageUrl,image: this.state.image, type: "image"});
   },
   insertImage(){
     if(this.state.image){
-      return (
-        <img src = {this.state.imageUrl} className="create-project-resized-image"></img>
-      );
+      return(
+      <img id = {this.props.id} onLoad={this.checkPortrait} src = {this.state.imageUrl}></img>
+    );
     }else{
       return(
         <img></img>
       );
     }
+  },
+  checkPortrait(){
+    var aspect_ratio = $(`#${this.props.id}`).width()/$(`#${this.props.id}`).height();
+    var container_ratio = 800/500;
+    if(aspect_ratio < container_ratio){
+      $(`#${this.props.id}`).addClass("create-project-resized-image-height");
+    }else{
+      $(`#${this.props.id}`).addClass("create-project-resized-image-width");
+    }
+
   },
   render(){
     return(
