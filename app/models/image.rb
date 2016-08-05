@@ -15,7 +15,6 @@
 class Image < ActiveRecord::Base
   validates :project_index, presence: true, uniqueness: true
   has_attached_file :image, default_url: "stripes.jpg"
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
 
   has_one :image_linker
