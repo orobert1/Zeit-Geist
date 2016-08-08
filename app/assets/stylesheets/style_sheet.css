@@ -1,7 +1,7 @@
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
 section, img, div, h2, p, form,
-fieldset, label, input, textarea,
+fieldset, label, input::before, textarea,
 span, article, footer, time, small {
   margin: 0;
   padding: 0;
@@ -36,7 +36,7 @@ color:white;
 .sign-in-index-button{
 
 }
-input[type="text"] {
+input[type="text"]::before {
   padding: 0 0 0 10px;
   width: 290px;
   margin: 10px 30px 10px;
@@ -324,9 +324,9 @@ input[type="submit"] {
     width: 1800px;
 }
 
-input[type="password"],
-input[type="email"],
-input[type="text"]{
+input[type="password"]::before,
+input[type="email"]::before,
+input[type="text"]::before{
   background-color:rgb(210,210,210);
   border-style:solid;
   border-color:rgb(170,170,170);
@@ -453,7 +453,7 @@ input[type="text"]{
 }
 .new-project-canvas {
     margin: auto;
-    width: 1300px;
+    width: 1700px;
     height: 1100px;
     padding-top: 200px;
 }
@@ -466,14 +466,15 @@ input[type="text"]{
     padding: 40px 0 50px 0;
 }
 .new-project-content {
-    width: 950px;
+    width: 1300px;
     max-height: 40000px;
     background-color: white;
     float: left;
     box-shadow: 0px 0px 50px rgb(210,210,210);
     margin-left: 270px;
     transition:2s;
-    padding-bottom:100px
+    padding-bottom:100px;
+    transition:.4s;
 
 }
 
@@ -515,22 +516,23 @@ input[type="text"]{
 }
 
 .image-object {
-    width: 800px;
-    height: 500px;
+    width: 1200px;
+    height: 800px;
     border-radius: 10px;
-    border-style: dashed;
-    border-color: rgb(50,150,200);
-    border-width: 4px;
+    border-style: dotted;
+    border-color: rgb(230,230,230);
+    border-width: 3px;
     float: left;
     margin-left: 70px;
     margin-top: 30px;
-    transition: .2s;
+    transition: 1s;
 }
+
 
 .image-object:hover {
   border-color: rgb(50,200,240);
   cursor:pointer;
-  transition: .2s;
+  transition: .5s;
 
 }
 .transparent {
@@ -538,13 +540,13 @@ input[type="text"]{
   pointer-events: none;
 }
 .create-project-resized-image-width{
-  height: 800px;
+  height: 1200px;
   margin: 0 auto;
   height: auto;
 }
 
 .create-project-resized-image-height{
-  height: 500px;
+  height: 800px;
   margin: 0 auto;
   width: auto;
 }
@@ -577,7 +579,8 @@ opacity:1;
 .project-submit-text-area{
   margin: 10px auto;
   width: 400px;
-  border: 1px solid;
+  border-radius:4px;
+  border: 3px rgb(200,200,200) solid;
   height: 200px;
   padding: 5px;
 }
@@ -585,4 +588,22 @@ opacity:1;
 .centered-text-object{
     margin: auto;
     width: 322px;
+}
+.create-new-project-title{
+  margin-top: 70px;
+  margin-left: 70px;
+  color:rgb(200,200,200);
+    font-size: 32pt;
+
+}
+
+.title-box{
+  background-color: white;
+  color: black;
+  width: 1000px;
+  border: none;
+  font-size: 32pt;
+  padding-left:10px;
+  MARGIN-LEFT:20px;
+
 }

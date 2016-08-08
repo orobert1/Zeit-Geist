@@ -10,6 +10,7 @@
 #  image_file_content_type :string
 #  image_file_file_size    :integer
 #  image_file_updated_at   :datetime
+#  project_id              :integer
 #
 
 require 'test_helper'

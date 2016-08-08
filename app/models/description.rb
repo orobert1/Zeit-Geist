@@ -13,8 +13,6 @@ class Description < ActiveRecord::Base
   validates :project_index, presence: true, uniqueness: true
   validates :body, presence: true
 
-  has_one :description_linker
-  has_many :projects, through: :description_linker
-
+  belongs_to :project
 
 end

@@ -14,6 +14,6 @@ class Project < ActiveRecord::Base
   validates :title, presence: true
 
   belongs_to :user
-  has_many :image_linkers
-  has_many :description_linkers
+  has_many :images
+  has_many :descriptions
 end

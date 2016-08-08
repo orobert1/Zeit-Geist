@@ -8,8 +8,7 @@ module.exports = React.createClass({
   },
   storeChange(e){
     this.setState({ text: e.target.value });
-    debugger
-    ContentStore.addContent({id: this.props.id, text: this.state.text});
+    ContentStore.addContent({id: this.props.id, text: e.target.value});
   },
 
   render(){

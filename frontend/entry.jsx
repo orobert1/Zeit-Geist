@@ -9,6 +9,7 @@ const CurrentUserStore = require('./stores/current_user_store');
 const Header = require('./components/header.jsx');
 const CreateUser = require('./components/create_user');
 const Profile = require('./components/profile');
+const ChooseCover = require('./components/choose_cover');
 const CreateNewProject = require('./components/create_new_project');
 window.util = Util;
 
@@ -31,7 +32,7 @@ const routes = (
     <Route path='/new_user' component={CreateUser}/>
     <Route path='/profile/:userId' component={Profile}/>
     <Route path='/create_new_project' component={CreateNewProject}/>
-
+    <Route path='/choose_project_cover' component={ChooseCover}/>
   </Route>
 );
 

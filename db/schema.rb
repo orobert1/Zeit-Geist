@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160805125406) do
+ActiveRecord::Schema.define(version: 20160808194624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +31,10 @@ ActiveRecord::Schema.define(version: 20160805125406) do
     t.text     "body",          null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "project_id"
   end
 
+  add_index "descriptions", ["project_id"], name: "index_descriptions_on_project_id", using: :btree
   add_index "descriptions", ["project_index"], name: "index_descriptions_on_project_index", using: :btree
 
   create_table "image_linkers", force: :cascade do |t|
@@ -53,15 +55,18 @@ ActiveRecord::Schema.define(version: 20160805125406) do
     t.string   "image_file_content_type"
     t.integer  "image_file_file_size"
     t.datetime "image_file_updated_at"
+    t.integer  "project_id"
   end
 
+  add_index "images", ["project_id"], name: "index_images_on_project_id", using: :btree
   add_index "images", ["project_index"], name: "index_images_on_project_index", using: :btree
 
   create_table "projects", force: :cascade do |t|
-    t.string   "title",      null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "title",       null: false
+    t.integer  "user_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "cover_image"
   end
 
   add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree

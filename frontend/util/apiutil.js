@@ -1,3 +1,4 @@
+const ErrorStore = require('../stores/errors_store');
 module.exports = {
   logIn(user,la){
     $.ajax({
@@ -53,5 +54,49 @@ module.exports = {
         la(data);
       }
     });
+  },
+
+  createProject(data, la){
+    $.ajax({
+      url: "api/projects",
+      method: 'POST',
+      data: data,
+      success(data){
+        la(data);
+      }
+    });
+  },
+
+  createImage(data, successCallback, errorCallback){
+    $.ajax({
+      url: "api/images",
+      method: "POST",
+      data: data,
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success(returnData){
+        successCallback(data);
+      },
+      errors(data){
+        errorCallback(data);
+      }
+    });
+  },
+
+  createDescription(data, successCallback, errorCallback){
+
+    $.ajax({
+      url: 'api/descriptions',
+      method: "POST",
+      data: data,
+      success(){
+        successCallback(data);
+      },
+      errors(data){
+        errorCallback(data);
+      }
+
+    })
   }
 };

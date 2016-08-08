@@ -4,13 +4,18 @@ const Link = require('react-router').Link;
 const ImageObject = require('./create_image_object');
 const ImageStore = require('../stores/content_store');
 const TextObject = require('./create_text_object');
-
-
-
+const ProjectActions = require('../actions/project_actions');
+const currentUser = require('../stores/current_user_store');
+const ChooseCover = require('./choose_cover');
 module.exports = React.createClass({
-
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
   getInitialState(){
-      return ({ input: [{type: "image"}]});
+      return ({ title: "", input: [{type: "image"}]});
+  },
+  titleChange(e){
+    this.setState({title: e.target.value});
   },
   createNewImageObject(){
     this.setState({
@@ -24,7 +29,7 @@ module.exports = React.createClass({
     });
   },
   submit(){
-    console.log(ImageStore.allImages());
+    ProjectActions.newProject({title:this.state.title, user_id: currentUser.current_user().id});
   },
   render(){
     return(
@@ -43,6 +48,11 @@ module.exports = React.createClass({
             </li>
           </div>
           <ul className = "new-project-content">
+            <h1 className="create-new-project-title">
+              Title
+              <input type = "text" className="title-box" onChange={this.titleChange}></input>
+
+            </h1>
             <form onSubmit={this.submit}>
               {
                 this.state.input.map(function(el, i){
@@ -56,7 +66,7 @@ module.exports = React.createClass({
                 })
               }
               <nav className="project-submit-nav">
-                <input type="submit" className="create-project-submit" onClick={this.submit}>  </input>
+                <input type="submit" className="create-project-submit">  </input>
               </nav>
             </form>
           </ul>
