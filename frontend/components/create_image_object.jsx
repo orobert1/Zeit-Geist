@@ -13,7 +13,7 @@ module.exports = React.createClass({
     var fileReader = new FileReader();
     fileReader.onloadend = function(){
       this.setState({ image: image, imageUrl: fileReader.result });
-      this.addtoImageStore();
+      ContentStore.addContent({id: this.props.id, image: this.state});
     }.bind(this);
 
     if(image){
@@ -45,6 +45,7 @@ module.exports = React.createClass({
 
   },
   render(){
+    ContentStore
     return(
       <label className="image-object" htmlFor={"imageUpload"+this.props.id}>
         {this.insertImage()}

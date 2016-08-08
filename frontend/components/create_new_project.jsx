@@ -24,7 +24,7 @@ module.exports = React.createClass({
     });
   },
   submit(){
-    alert(ImageStore.allImages());
+    console.log(ImageStore.allImages());
   },
   render(){
     return(
@@ -56,7 +56,7 @@ module.exports = React.createClass({
                 })
               }
               <nav className="project-submit-nav">
-                <input type="submit" className="create-project-submit">  </input>
+                <input type="submit" className="create-project-submit" onClick={this.submit}>  </input>
               </nav>
             </form>
           </ul>

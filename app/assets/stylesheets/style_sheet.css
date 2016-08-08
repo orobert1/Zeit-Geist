@@ -573,3 +573,16 @@ opacity:1;
   width:150px;
   margin: auto;
 }
+
+.project-submit-text-area{
+  margin: 10px auto;
+  width: 400px;
+  border: 1px solid;
+  height: 200px;
+  padding: 5px;
+}
+
+.centered-text-object{
+    margin: auto;
+    width: 322px;
+}
