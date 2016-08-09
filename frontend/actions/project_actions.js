@@ -30,7 +30,7 @@ module.exports = {
       fnc: fnc
     });
   },
-  this.loadPosts(posts){
+  loadPosts(posts){
     Dispatcher.dispatch({
       actionType: Constants.loadIndex,
       posts: posts

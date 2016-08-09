@@ -7,9 +7,7 @@ module.exports = React.createClass({
   getInitialState(){
     return({posts:[], max:30, min:0});
   },
-  componentDidMount(){
-    ProjectActions.loadProjectIndex(this.state.min,this.state.max);
-  },
+
   populate(){
     let result = [];
     for(var i = 0; i<this.state.max;i++){
