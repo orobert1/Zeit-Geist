@@ -1,13 +1,14 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const IndexItem = require('./index_item');
+const ProjectActions = require('../actions/project_actions');
 
 module.exports = React.createClass({
   getInitialState(){
-    return({posts:[], max:30});
+    return({posts:[], max:30, min:0});
   },
   componentDidMount(){
-    
+    ProjectActions.loadProjectIndex(this.state.min,this.state.max);
   },
   populate(){
     let result = [];

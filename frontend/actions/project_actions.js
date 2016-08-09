@@ -13,6 +13,9 @@ module.exports = {
   updateCoverPhoto(data,fnc){
     ApiUtil.editProject(data,fnc);
   },
+  loadProjectIndex(min, max){
+    ApiUtil.getProjects(min, max, this.loadPosts);
+  },
   getImages(data){
     Dispatcher.dispatch({
       actionType: Constants.GetImages,
@@ -27,7 +30,12 @@ module.exports = {
       fnc: fnc
     });
   },
-
+  this.loadPosts(posts){
+    Dispatcher.dispatch({
+      actionType: Constants.loadIndex,
+      posts: posts
+    })
+  },
   addImageToImageStore(img){
     Dispatcher.dispatch({
       actionType: Constants.AddImage,

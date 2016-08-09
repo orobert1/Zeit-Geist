@@ -10,7 +10,7 @@ module.exports = React.createClass({
     ContentStore
     let fnc = this.context.router.push('/index');
     let data = ContentStore.getProject();
-    data.cover_image = this.props.id
+    data.cover_image = this.props.url
     ProjectActions.updateCoverPhoto(data, fnc);
   },
 

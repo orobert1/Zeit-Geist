@@ -118,5 +118,11 @@ module.exports = {
         console.log("You are so successfuck");
       }
     })
+  },
+  getProjects(){
+    $.ajax({
+      url:'api/projects',
+      method: 'GET'
+    })
   }
 };
