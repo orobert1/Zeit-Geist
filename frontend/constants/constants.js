@@ -3,5 +3,7 @@ module.exports = {
   REMOVE_USER: "REMOVE_USER",
   RECEIVE_USER: "RECEIVE_USER",
   CREATE_USER: "CREATE_USER",
-  CreateProject: "CreateProject"
+  CreateProject: "CreateProject",
+  GetImages: "GET_IMAGES",
+  addImage: "ADD_IMAGE"
 };

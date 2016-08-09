@@ -21,6 +21,9 @@ span, article, footer, time, small {
   margin: 100px;
   width: 400px;
 }
+.cover-image-choice{
+  width:200;
+}
 .centered-text{
 position: relative;
 top: 80px;
@@ -475,6 +478,7 @@ input[type="text"]::before{
     transition:2s;
     padding-bottom:100px;
     transition:.4s;
+    min-height: 600px;
 
 }
 
@@ -553,7 +557,8 @@ input[type="text"]::before{
 
 .create-project-submit{
   width: 150px;
-  height: 40px color:white;
+  height: 40px;
+  color:white;
   background-color: rgb(50,150,200);
   text-align: center;
   margin-top: 20px;
@@ -606,4 +611,36 @@ opacity:1;
   padding-left:10px;
   MARGIN-LEFT:20px;
 
+}
+.cover-image-choice{
+  height:400px;
+  width:auto;
+  clear:none;
+  margin-left:50px;
+
+
+
+}
+.cover-photos-header{
+  text-align: center;
+  font-size:24pt;
+  margin: 50px 200px;
+  color:rgb(200,200,200);
+  font-weight:bold;
+}
+.cover-image-choice-image{
+  width:inherit;
+  height:inherit;
+  opacity:1;
+  transition:.5s;
+}
+.cover-image-choice-image:hover{
+  opacity:.3;
+  transition:.5s;
+  cursor:pointer;
+  backgroung-color:red;
+  padding:10px;
+}
+.centered-cover-photots{
+  margin:auto;
 }

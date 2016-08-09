@@ -10,6 +10,7 @@ let _users = {};
 UserStore.find = function(id){
   return _users[id];
 };
+console.log("asdhj")
 
 UserStore.__onDispatch = function(payload){
   switch(payload.actionType){

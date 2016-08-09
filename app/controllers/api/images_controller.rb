@@ -5,13 +5,19 @@ class Api::ImagesController < ApplicationController
       project_index: image_params[:id],
       image_file: image_params[:image]
     )
-    if @image.save
 
-      render json: @image
+    if @image.save
+      render json: {id: @image.id, url:@image.image_file.url}
     else
 
       render json: @image
     end
+  end
+
+  def index
+    @project = Project.find(params[:project_id]).images
+    @project = @project.map{|proj| {id:proj.id, url:proj.image_file.url}}
+    render json: @project
   end
 
 

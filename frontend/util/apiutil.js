@@ -56,13 +56,14 @@ module.exports = {
     });
   },
 
-  createProject(data, la){
+  createProject(data, la, fnc){
+    fnc = fnc;
     $.ajax({
       url: "api/projects",
       method: 'POST',
       data: data,
       success(data){
-        la(data);
+        la(data, fnc);
       }
     });
   },
@@ -76,10 +77,10 @@ module.exports = {
       processData: false,
       dataType: "json",
       success(returnData){
-        successCallback(data);
+        successCallback(returnData);
       },
-      errors(data){
-        errorCallback(data);
+      errors(returnData){
+        errorCallback(returnData);
       }
     });
   },
@@ -97,6 +98,25 @@ module.exports = {
         errorCallback(data);
       }
 
+    })
+  },
+  getImages(id, successCallback){
+    $.ajax({
+      url:`api/projects/${id}/images`,
+      method:'GET',
+      success(data){
+        successCallback(data);
+      }
+    })
+  },
+  editProject(data, la){
+    $.ajax({
+      url:`api/projects/${data.id}`,
+      method: 'PATCH',
+      data: {cover_image: data.cover_image, title: data.title, user_id: data.user_id},
+      success(returnData){
+        console.log("You are so successfuck");
+      }
     })
   }
 };

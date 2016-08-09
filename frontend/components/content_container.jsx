@@ -4,11 +4,14 @@ const IndexItem = require('./index_item');
 
 module.exports = React.createClass({
   getInitialState(){
-    return({posts:30});
+    return({posts:[], max:30});
+  },
+  componentDidMount(){
+    
   },
   populate(){
     let result = [];
-    for(var i = 0; i<this.state.posts;i++){
+    for(var i = 0; i<this.state.max;i++){
       result.push(i);
     }
     return result;

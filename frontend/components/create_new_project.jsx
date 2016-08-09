@@ -23,13 +23,16 @@ module.exports = React.createClass({
     });
 
   },
+  _goToChooseCover(){
+    this.context.router.push("/choose_project_cover");
+  },
   createNewTextObject(){
     this.setState({
         input: this.state.input.concat([{type: "text"}])
     });
   },
   submit(){
-    ProjectActions.newProject({title:this.state.title, user_id: currentUser.current_user().id});
+    ProjectActions.newProject({title:this.state.title, user_id: currentUser.current_user().id}, this._goToChooseCover);
   },
   render(){
     return(
@@ -49,10 +52,10 @@ module.exports = React.createClass({
           </div>
           <ul className = "new-project-content">
             <h1 className="create-new-project-title">
-              Title
+              title
               <input type = "text" className="title-box" onChange={this.titleChange}></input>
-
             </h1>
+
             <form onSubmit={this.submit}>
               {
                 this.state.input.map(function(el, i){

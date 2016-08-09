@@ -6,7 +6,7 @@ module.exports = React.createClass({
   getInitialState(){
       return ({image: null, imageUrl: null});
   },
-  componentDidMount(){
+  componentWillMount(){
   },
   getImage(e){
     var image = e.currentTarget.files[0];
