@@ -113,16 +113,29 @@ module.exports = {
     $.ajax({
       url:`api/projects/${data.id}`,
       method: 'PATCH',
-      data: {cover_image: data.cover_image, title: data.title, user_id: data.user_id},
+      data: data,
       success(returnData){
-        console.log("You are so successfuck");
+        la(returnData);
       }
     })
   },
-  getProjects(){
+  getProjects(min, max, la){
     $.ajax({
-      url:'api/projects',
-      method: 'GET'
+      url:'api/projects/',
+      method: 'GET',
+      data: {min: min, max: max},
+      success(data){
+        la(data);
+      }
+    })
+  },
+  getProject(id, la){
+    $.ajax({
+      url: `api/projects/${id}`,
+      method: 'GET',
+      success(data){
+        la(data);
+      }
     })
   }
 };

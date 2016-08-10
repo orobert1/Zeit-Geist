@@ -53,6 +53,7 @@ ContentStore.checkQueue = function(){
   return _queue;
 }
 ContentStore.__onDispatch = function(payload){
+  
   switch(payload.actionType){
     case Constants.CreateProject:
     let project = payload.data;
@@ -76,6 +77,11 @@ ContentStore.__onDispatch = function(payload){
     payload.fnc()
     ContentStore.__emitChange();
     break;
+
+    case Constants.GET_PROJECT:
+    _project = payload.post;
+    ContentStore.__emitChange();
+    break
   }
 };
 

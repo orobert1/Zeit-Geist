@@ -11,6 +11,8 @@ const CreateUser = require('./components/create_user');
 const Profile = require('./components/profile');
 const ChooseCover = require('./components/choose_cover');
 const CreateNewProject = require('./components/create_new_project');
+const CoverCrop = require('./components/cover_crop');
+const ShowProject = require('./components/show_project');
 window.util = Util;
 
 const App = React.createClass({
@@ -33,6 +35,8 @@ const routes = (
     <Route path='/profile/:userId' component={Profile}/>
     <Route path='/create_new_project' component={CreateNewProject}/>
     <Route path='/choose_project_cover' component={ChooseCover}/>
+    <Route path='/cover-crop/:projectId' component={CoverCrop}/>
+    <Route path='/show/:projectId' component={ShowProject}/>
   </Route>
 );
 

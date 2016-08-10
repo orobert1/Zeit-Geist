@@ -2,16 +2,24 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const IndexItem = require('./index_item');
 const ProjectActions = require('../actions/project_actions');
+const ProjectIndexStore = require('../stores/project_index_store')
 
 module.exports = React.createClass({
   getInitialState(){
     return({posts:[], max:30, min:0});
   },
+  componentDidMount(){
+    ProjectActions.loadProjectIndex(this.state.min,this.state.max);
+    ProjectIndexStore.addListener(this._change);
+  },
+  _change(){
+    this.setState({posts: ProjectIndexStore.allProjects()});
 
+  },
   populate(){
     let result = [];
-    for(var i = 0; i<this.state.max;i++){
-      result.push(i);
+    for(var i = 0; i<this.state.posts;i++){
+      result.push(this.state.post[i]);
     }
     return result;
   },
@@ -20,12 +28,13 @@ module.exports = React.createClass({
     return(
       <div className = "content-container">
         {
-          this.populate().map(
-            function(el){
-              return ( <IndexItem key={el} className="index-item"/> );
+            this.state.posts.map(function(el){
+              return ( <IndexItem key={el.project.id} el={el.project} user={el.username} className="index-item"/> );
             }
           )
+
         }
+        {this.props.children}
       </div>
     );
   }

@@ -8,10 +8,15 @@ module.exports = React.createClass({
   },
   choose(){
     ContentStore
-    let fnc = this.context.router.push('/index');
+
+    let fnc = this.context.router.push;
     let data = ContentStore.getProject();
     data.cover_image = this.props.url
-    ProjectActions.updateCoverPhoto(data, fnc);
+    ProjectActions.updateCoverPhoto(data, this._change);
+  },
+  _change(project){
+    ContentStore.setProject(project);
+    this.context.router.push('cover-crop/'+project.id);
   },
 
   render(){

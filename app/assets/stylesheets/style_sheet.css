@@ -153,28 +153,30 @@ input[type="submit"] {
   height:218px;
   width:100%;
 }
-.head-image-container{
-  background-color: none;
-  opacity: 1;
-  position: rlative;
-  float: left;
-  width:100%;
-  z-index:-2;
-
+.head-image-container {
+    background-color: none;
+    opacity: 1;
+    position: relative;
+    float: left;
+    width: 100%;
+    z-index: -2;
+    height: 225px;
 }
 .head-image{
   margin:auto 0;
-  background-image: url(painting-header.jpg);
   position:absolute;
   width:100%;
-  height:100%;
+  top:60px;
+  background-image: url(painting-header.jpg);
+  height:auto;
+  height: 200px;
 }
 
 .head-overlay{
   width:100%;
   height:100%;
   background-color:black;
-  opacity: .6;
+  opacity: .3;
   position:absolute
 }
 .content-container{
@@ -257,7 +259,7 @@ input[type="submit"] {
 }
 
 .filter-options{
-  max-width: 800px;
+  max-width: 538px;
   margin: 0 auto;
 
 }
@@ -296,7 +298,7 @@ input[type="submit"] {
   border-radius:5px;
   position:relative;
   transition: .4s ease-in-out;
-  box-shadow: 0px 0px 8px rgb(2,2,2);
+  box-shadow: 0px 0px 4px rgb(150,150,150);
 }
 .index-item:hover{
   transform: rotate3d(0, 10, 0, 12deg);
@@ -307,8 +309,37 @@ input[type="submit"] {
     background-color: red;
     height: 50%;
     border-radius:4px;
+    opacity: .7;
     width: 100%;
-    background-image: url(stripes.jpg);
+    overflow: hidden;
+    transition: .3s ease-in-out;
+    position:relative;
+}
+.cover-image:hover{
+  opacity: 1;
+  transition: .3s ease-in-out;
+
+}
+.cover-image-overlay{
+  width: 100%;
+  height: 147px;
+  background: radial-gradient(rgb(150,150,150) 0%, rgb(0,0,0) 100%);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  opacity: .5;
+  transition: .3s ease-in-out;
+
+
+}
+.cover-image-overlay:hover{
+  opacity:0;
+  transition: .3s ease-in-out;
+
+}
+.cover-image-crop{
+    margin-top: -30%;
+    width: auto;
 }
 
 .sidebar {
@@ -373,11 +404,11 @@ input[type="text"]::before{
 }
 .header-droppdow-inner-text{
   float: right;
-  width: 40px;
-  height: 40px;
+  padding: 10px 10px 10px 10px;
+  min-width: 40px;
+  max-height: 40px;
   background-color: rgb(255, 26, 180);
   margin-top: 10px;
-  background-color: orange;
 }
 .header-dropdown:hover .hidden-dropdown{
   opacity: 1;
@@ -625,7 +656,6 @@ opacity:1;
   text-align: center;
   font-size:24pt;
   margin: 50px 200px;
-  color:rgb(200,200,200);
   font-weight:bold;
 }
 .cover-image-choice-image{
@@ -643,4 +673,46 @@ opacity:1;
 }
 .centered-cover-photots{
   margin:auto;
+}
+.center-for-crop {
+    margin: 0px auto;
+    width: 400px;
+}
+
+.margin-crop-top {
+    margin-top: 200px;
+    float: left;
+}
+.range-slider{
+  margin: 0px 40px 20px;
+  float: left;
+  clear: both;
+  color: rgb(200,200,200);
+
+}
+.crop-cover-submit{
+  float:left;
+  clear:both;
+  margin-left:25px;
+  color: rgb(50,50,50);
+  width:160px;
+  height:40px;
+  border-radius: 5px;
+  background-color:rgb(50,150,200);
+  text-align: center;
+  transition: .2s ease-in-out;
+}
+.crop-cover-submit:hover{
+  background-color:rgb(50,200,240);
+  transition: .2s ease-in-out;
+
+}
+strong{
+  font-weight:bold;
+}
+.author-title {
+    color: rgb(200,200,200);
+    margin: 10px 20px;
+    float: left;
+    font-weight:bole
 }

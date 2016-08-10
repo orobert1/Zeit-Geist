@@ -10,6 +10,10 @@ let _users = {};
 UserStore.find = function(id){
   return _users[id];
 };
+
+UserStore.currentUser = function(){
+  return _users;
+}
 console.log("asdhj")
 
 UserStore.__onDispatch = function(payload){

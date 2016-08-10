@@ -11,7 +11,7 @@ module.exports = React.createClass({
     router: React.PropTypes.object.isRequired
   },
   getInitialState(){
-    return({logged_in: CurrentUserStore.logged_in()});
+    return({logged_in: CurrentUserStore.current_user()});
   },
   componentDidMount(){
     CurrentUserStore.addListener(this._change);
@@ -21,13 +21,15 @@ module.exports = React.createClass({
 
   },
   _change(){
-    this.setState({logged_in: CurrentUserStore.logged_in()});
+    this.setState({logged_in: CurrentUserStore.current_user()});
   },
   determineButton(){
     if(this.state.logged_in){
       return (
         <div className="header-dropdown">
-          <p className="header-droppdow-inner-text"></p>
+          <p className="header-droppdow-inner-text">
+            {this.state.logged_in.username}
+          </p>
           <ul className="hidden-dropdown">
             <li>
               <Link to={"/profile/"+CurrentUserStore.current_user().id}>Profile</Link>

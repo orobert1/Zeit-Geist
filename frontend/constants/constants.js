@@ -5,5 +5,6 @@ module.exports = {
   CREATE_USER: "CREATE_USER",
   CreateProject: "CreateProject",
   GetImages: "GET_IMAGES",
-  addImage: "ADD_IMAGE"
+  addImage: "ADD_IMAGE",
+  GET_PROJECT: "GET_PROJECT"
 };
