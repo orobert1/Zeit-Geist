@@ -34,9 +34,10 @@ class Api::UsersController < ApplicationController
   end
 
   def show
+    debugger
     @projects = Project.includes(:user)
     .where("user_id = ? AND created_at > ?",
-    1,params[:last_project_update_creation])
+    params[:id],params[:last_project_update_creation])
     .order("created_at ASC")
     .take(params[:payload_size])
 

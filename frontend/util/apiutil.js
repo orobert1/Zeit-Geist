@@ -55,13 +55,13 @@ module.exports = {
       }
     });
   },
-  fuck(id, creation, max, la){
+  getUserProfile(id, creation, max, la){
     $.ajax({
       url: `api/users/${id}`,
       method: 'GET',
       data: {last_project_update_creation: creation, payload_size: max},
       success(data){
-
+        
         la(data);
       }
     });
@@ -113,7 +113,7 @@ module.exports = {
     })
   },
   getImages(id, successCallback){
-    debugger
+
     $.ajax({
       url:`api/projects/${id}/images`,
       method:'GET',

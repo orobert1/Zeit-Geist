@@ -7,7 +7,7 @@ module.exports = React.createClass({
     router: React.PropTypes.object.isRequired
   },
   choose(){
-    debugger
+
     let fnc = this.context.router.push;
     let data = ContentStore.getProject();
     data.cover_image = this.props.url

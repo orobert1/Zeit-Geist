@@ -140,13 +140,15 @@ input[type="submit"] {
 }
 
 .logo {
-    background-color: white;
     margin-top:10px;
     margin-left: 80px;
-    width: 150px;
+    width: 180px;
     height: 40px;
     float: left;
     background-image: url(zeit-geist.png);
+    background-size:     contain;                      /* <------ */
+   background-repeat:   no-repeat;
+   background-position: center center;
 }
 .head-fixed{
   position: fixed;
@@ -463,17 +465,16 @@ input[type="text"]::before{
     /* width: 282px; */
     margin: 0 auto;
     position: relative;
-    margin-top: 15px;
+    margin-top: 10px;
+    height: 30px;
     font-size: 10pt;
     font-weight: 200;
     padding: 5px 10px 5px 10px;
-    background-color: rgb(50,150,200);
+    background-color: rgb(30,30,30);
     border-radius: 8px;
     letter-spacing: 1px;
     transition: .2s;
-
 }
-
 .nav-wrap {
     position: relative;
     width: 500px;

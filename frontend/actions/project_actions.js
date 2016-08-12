@@ -7,7 +7,7 @@ module.exports = {
   },
 
   getProjectImages(id){
-    debugger
+    
 
     ApiUtil.getImages(id, this.getImages);
   },

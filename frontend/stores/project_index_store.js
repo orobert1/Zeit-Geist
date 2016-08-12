@@ -30,13 +30,17 @@ ProjectIndexStore.allProjects = function(){
 }
 
 ProjectIndexStore.__onDispatch = function(payload){
+
+
   switch(payload.actionType){
     case Constants.loadIndex:
     _projectIndex = payload.posts;
     this.__emitChange();
     break
     case Constants.RECEIVE_USER_PROJECTS:
-    _projectIndex = payload.projects;
+    if(payload.projects.size != 1 || payload.project[0].id != _projectIndex[_projectIndex.length - 1].id ){
+      _projectIndex = _projectIndex.concat(payload.projects);
+    }
     this.__emitChange();
     break;
   }

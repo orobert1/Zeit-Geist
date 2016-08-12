@@ -16,7 +16,7 @@ module.exports = React.createClass({
   componentDidMount(){
     this.act = CurrentUserStore.addListener(this._change);
     SessionActions.checkCurrentUser();
-    debugger
+    
   },
 
   _change(){

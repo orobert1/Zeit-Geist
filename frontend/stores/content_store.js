@@ -12,12 +12,19 @@ let _content = {};
 let _project = {};
 let _images = [];
 let _queue = [];
+let _user_profile = {};
 ContentStore.addContent = function(item){
   _content[item.id] = item;
 };
 ContentStore.addImage = function(image){
   _content[image.id] = image;
 };
+ContentStore.getUserProfile = function(){
+  return _user_profile;
+},
+ContentStore.setUserProfile = function(profile){
+  _user_profile = profile;
+}
 
 ContentStore.getProject = function(){
   return _project;
@@ -82,6 +89,12 @@ ContentStore.__onDispatch = function(payload){
     _project = payload.post;
     ContentStore.__emitChange();
     break
+
+    case Constants.UPDATE_PROFILE:
+    this.setUserProfile(payload.user);
+    ContentStore.__emitChange();
+    break
+
 
   }
 };

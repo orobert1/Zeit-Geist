@@ -27,7 +27,7 @@ module.exports = React.createClass({
 
   },
   _goToChooseCover(){
-    debugger
+    
     this.context.router.push("/choose_project_cover");
   },
   createNewTextObject(){
