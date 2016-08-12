@@ -11,7 +11,7 @@ module.exports = React.createClass({
     this.context.router.push('show/'+this.props.el.id);
   },
   render(){
-
+    
     if(this.props.el){
       var imgUrl = this.props.el.cover_image;
       var imgStyle = {

@@ -42,9 +42,9 @@ module.exports = React.createClass({
         if(i===last){
           listener = "listenToMe";
         }
-        return ( <IndexItem key={el.project.id} listener={listener} el={el.project} user={el.user.username} userId={el.user_id} className="index-item"/>);
+        return ( <IndexItem key={el.project.id} listener={listener} el={el.project} user={el.user.username} userId={el.user.id} className="index-item"/>);
       });
-      debugger
+
     }
     return(
       <div className = "content-container">
