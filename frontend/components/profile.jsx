@@ -21,13 +21,14 @@ module.exports = React.createClass({
     this.act.remove();
   },
   _change(){
+
     let projs = ProjectIndexStore.allProjects();
     this.setState({user: ContentStore.getUserProfile(),
     projects: projs,
     last_created_at: projs[projs.length-1].created_at});
     ProjectIndexStore.updateDate(this.state.last_created_at);
     ProjectIndexStore.setFetchFalse();
-
+    ;
 
   },
   loadMoreProjects(){
@@ -37,6 +38,14 @@ module.exports = React.createClass({
     return <div className="infinite-list-item">
         Loading...
     </div>;
+},
+coverImage(){
+  if(this.state.projects.length>0){
+
+    return(this.state.projects[0].cover_image);
+  }else{
+    return "";
+  }
 },
 
   render(){
@@ -60,6 +69,7 @@ module.exports = React.createClass({
     return(
       <div className="profile-content-container">
         <div className="profile-user-side-menu">
+          <img src={this.coverImage()} className="profile-picture"/>
           <h3>
             {
               username

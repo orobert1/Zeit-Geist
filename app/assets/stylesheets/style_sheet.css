@@ -428,7 +428,7 @@ input[type="text"]::before{
   margin: 0px auto;
 }
 .profile-user-side-menu{
-  float:left;
+  position:fixed;
   width: 350px;
   height: 900px;
   margin-top:200px;
@@ -442,11 +442,12 @@ input[type="text"]::before{
   font-weight:500;
 }
 .profile-projects{
-  float:left;
+  float: left;
   width: 800px;
-  opacity:1;
-  height:900px;
-  margin-top:200px;
+  opacity: 1;
+  height: 900px;
+  margin-top: 200px;
+  margin-left: 420px;
 
 
 }
@@ -729,4 +730,11 @@ strong{
     margin: 10px 20px;
     float: left;
     font-weight:bold;
+}
+.profile-picture{
+  border-radius: 100%;
+  width: 250px;
+  height: 250px;
+  border: rgb(50,50,50) 20px solid;
+  margin-right: 20px;
 }

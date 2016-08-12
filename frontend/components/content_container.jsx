@@ -13,6 +13,7 @@ module.exports = React.createClass({
     this.act = ProjectIndexStore.addListener(this._change);
   },
   componentWillUnmount(){
+    ProjectIndexStore.remove_all();
     this.act.remove();
   },
   _change(){

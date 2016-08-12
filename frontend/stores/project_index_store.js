@@ -11,6 +11,10 @@ let _fetching_projects = false;
 ProjectIndexStore.setFetchTrue = function(){
    _fetching_projects = true;
 }
+ProjectIndexStore.remove_all = function(){
+   _projectIndex = [];
+
+},
 ProjectIndexStore.setFetchFalse = function(){
    _fetching_projects = false;
 }
@@ -38,6 +42,7 @@ ProjectIndexStore.__onDispatch = function(payload){
     this.__emitChange();
     break
     case Constants.RECEIVE_USER_PROJECTS:
+
     if(payload.projects.size != 1 || payload.project[0].id != _projectIndex[_projectIndex.length - 1].id ){
       _projectIndex = _projectIndex.concat(payload.projects);
     }

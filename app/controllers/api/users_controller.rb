@@ -34,7 +34,7 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    debugger
+
     @projects = Project.includes(:user)
     .where("user_id = ? AND created_at > ?",
     params[:id],params[:last_project_update_creation])
