@@ -6,5 +6,6 @@ module.exports = {
   CreateProject: "CreateProject",
   GetImages: "GET_IMAGES",
   addImage: "ADD_IMAGE",
-  GET_PROJECT: "GET_PROJECT"
+  GET_PROJECT: "GET_PROJECT",
+  RECEIVE_USER_PROJECTS: "RECEIVE_USER_PROJECTS"
 };

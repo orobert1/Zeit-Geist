@@ -14,7 +14,6 @@ UserStore.find = function(id){
 UserStore.currentUser = function(){
   return _users;
 }
-console.log("asdhj")
 
 UserStore.__onDispatch = function(payload){
   switch(payload.actionType){

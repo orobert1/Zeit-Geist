@@ -16,10 +16,10 @@ module.exports = React.createClass({
 
   componentDidMount(){
     ProjectActions.getProjectImages(this.state.project.id);
-    ImagesStore.addListener(this._change);
+    this.act = ImagesStore.addListener(this._change);
   },
   componentWillUnmount(){
-
+    this.act.remove();
   },
   _shit(){
     if(ErrorStore.getAllErrors>1){

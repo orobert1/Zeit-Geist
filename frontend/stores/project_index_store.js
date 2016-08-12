@@ -6,6 +6,24 @@ const Constants = require('../constants/constants');
 
 const ProjectIndexStore = new Store(AppDispatcher);
 let _projectIndex = [];
+let _last_project_date = "";
+let _fetching_projects = false;
+ProjectIndexStore.setFetchTrue = function(){
+   _fetching_projects = true;
+}
+ProjectIndexStore.setFetchFalse = function(){
+   _fetching_projects = false;
+}
+ProjectIndexStore.getLastDate = function(){
+  return _last_project_date;
+}
+ProjectIndexStore.getFetchStatus = function(){
+  return _fetching_projects;
+}
+
+ProjectIndexStore.updateDate = function(date){
+  _last_project_date = date;
+}
 
 ProjectIndexStore.allProjects = function(){
   return _projectIndex;
@@ -17,6 +35,10 @@ ProjectIndexStore.__onDispatch = function(payload){
     _projectIndex = payload.posts;
     this.__emitChange();
     break
+    case Constants.RECEIVE_USER_PROJECTS:
+    _projectIndex = payload.projects;
+    this.__emitChange();
+    break;
   }
 };
 

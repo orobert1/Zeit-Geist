@@ -10,11 +10,13 @@ module.exports = React.createClass({
   },
   componentDidMount(){
     ProjectActions.loadProjectIndex(this.state.min,this.state.max);
-    ProjectIndexStore.addListener(this._change);
+    this.act = ProjectIndexStore.addListener(this._change);
+  },
+  componentWillUnmount(){
+    this.act.remove();
   },
   _change(){
     this.setState({posts: ProjectIndexStore.allProjects()});
-
   },
   populate(){
     let result = [];
@@ -25,11 +27,12 @@ module.exports = React.createClass({
   },
 
   render(){
+
     return(
       <div className = "content-container">
         {
             this.state.posts.map(function(el){
-              return ( <IndexItem key={el.project.id} el={el.project} user={el.username} className="index-item"/> );
+              return ( <IndexItem key={el.project.id} el={el.project} user={el.username} userId={el.user_id} className="index-item"/> );
             }
           )
 

@@ -14,12 +14,11 @@ module.exports = React.createClass({
     return({logged_in: CurrentUserStore.current_user()});
   },
   componentDidMount(){
-    CurrentUserStore.addListener(this._change);
+    this.act = CurrentUserStore.addListener(this._change);
     SessionActions.checkCurrentUser();
-    console.log("mounted");
-
-
+    debugger
   },
+
   _change(){
     this.setState({logged_in: CurrentUserStore.current_user()});
   },

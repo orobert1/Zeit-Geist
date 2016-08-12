@@ -24,7 +24,7 @@ class Api::UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
     if @user
       @user.destroy
       render json: @user
@@ -34,11 +34,17 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
+    @projects = Project.includes(:user)
+    .where("user_id = ? AND created_at > ?",
+    1,params[:last_project_update_creation])
+    .order("created_at ASC")
+    .take(params[:payload_size])
 
-    if @user.username
-      render json: @user
-    end
+    # @projects = @user.projects..
+
+
+      render json: {user: @projects[0].user , projects: @projects}
+
 
   end
 

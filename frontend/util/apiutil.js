@@ -55,6 +55,17 @@ module.exports = {
       }
     });
   },
+  fuck(id, creation, max, la){
+    $.ajax({
+      url: `api/users/${id}`,
+      method: 'GET',
+      data: {last_project_update_creation: creation, payload_size: max},
+      success(data){
+
+        la(data);
+      }
+    });
+  },
 
   createProject(data, la, fnc){
     fnc = fnc;
@@ -77,6 +88,7 @@ module.exports = {
       processData: false,
       dataType: "json",
       success(returnData){
+        console.log("Fuckkkk")
         successCallback(returnData);
       },
       errors(returnData){
@@ -101,6 +113,7 @@ module.exports = {
     })
   },
   getImages(id, successCallback){
+    debugger
     $.ajax({
       url:`api/projects/${id}/images`,
       method:'GET',

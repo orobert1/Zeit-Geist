@@ -44,7 +44,6 @@ ContentStore.getImages = function(){
 }
 ContentStore.removeFromQueue = function(item){
   _queue.shift();
-  console.log("boop");
   ProjectActions.addImageToImageStore(item);
   return item;
 };
@@ -53,12 +52,13 @@ ContentStore.checkQueue = function(){
   return _queue;
 }
 ContentStore.__onDispatch = function(payload){
-  
+
   switch(payload.actionType){
     case Constants.CreateProject:
     let project = payload.data;
+    console.log(payload);
     ContentStore.setProject(project);
-    let content = this.allImages();
+    let content = ContentStore.allImages();
     let keys = Object.keys(content)
     keys.forEach(function(el){
       let cont = content[el];
@@ -82,6 +82,7 @@ ContentStore.__onDispatch = function(payload){
     _project = payload.post;
     ContentStore.__emitChange();
     break
+
   }
 };
 

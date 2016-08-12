@@ -9,21 +9,26 @@ module.exports = React.createClass({
     return({project: "", images: ""})
   },
   componentDidMount(){
-    console.log("butthole");
-    if(this.state.Project){
+
+    if(this.state.project){
       ProjectActions.getProjectImages(this.props.params.projectId);
     }else{
       ProjectActions.getProject(this.props.params.projectId);
       ProjectActions.getProjectImages(this.props.params.projectId);
     }
-    ImageStore.addListener(this.__change);
-    ContentStore.addListener(this.__change);
+    this.act = ImageStore.addListener(this.__change);
+    this.other_act = ContentStore.addListener(this.__change);
+  },
+  componentWillUnmount(){
+    this.act.remove();
+    this.other_act.remove();
   },
   __change(){
     this.setState({project: ContentStore.getProject(), images: ImageStore.getImages()});
   },
 
   render(){
+
     let population = '';
     if(this.state.images.length>0){
       population = this.state.images.map(function(el){
@@ -32,7 +37,7 @@ module.exports = React.createClass({
     }else{
       population = <div/>;
     }
-    debugger
+
     return(
       <div className = "new-project-all">
         <main className = "new-project-canvas">

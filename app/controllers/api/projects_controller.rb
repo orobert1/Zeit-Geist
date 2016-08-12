@@ -1,8 +1,7 @@
 class Api::ProjectsController < ApplicationController
   def index
-
     a = Project.includes(:user).take(params[:max])
-    @projects = a.map{|proj| {project: proj, username: proj.user.username}}
+    @projects = a.map{|proj| {project: proj, username: proj.user.username, user_id: proj.user.id}}
     render json: @projects
   end
 

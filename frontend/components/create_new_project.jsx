@@ -14,6 +14,9 @@ module.exports = React.createClass({
   getInitialState(){
       return ({ title: "", input: [{type: "image"}]});
   },
+  componentDidMount(){
+
+  },
   titleChange(e){
     this.setState({title: e.target.value});
   },
@@ -24,6 +27,7 @@ module.exports = React.createClass({
 
   },
   _goToChooseCover(){
+    debugger
     this.context.router.push("/choose_project_cover");
   },
   createNewTextObject(){
@@ -53,7 +57,7 @@ module.exports = React.createClass({
           <ul className = "new-project-content">
             <h1 className="create-new-project-title">
               title
-              <input type = "text" className="title-box" onChange={this.titleChange}></input>
+              <input type = "text" className="title-box" onChange={this.titleChange}/>
             </h1>
 
             <form onSubmit={this.submit}>
@@ -69,7 +73,7 @@ module.exports = React.createClass({
                 })
               }
               <nav className="project-submit-nav">
-                <input type="submit" className="create-project-submit">  </input>
+                <input type="submit" className="create-project-submit"/>
               </nav>
             </form>
           </ul>

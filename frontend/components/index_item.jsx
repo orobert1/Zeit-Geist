@@ -1,12 +1,13 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
+const Link = require('react-router').Link;
 
 module.exports = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
   visitPage(){
-    debugger
+
     this.context.router.push('show/'+this.props.el.id);
   },
   render(){
@@ -20,13 +21,23 @@ module.exports = React.createClass({
       }
     }
     return(
-      <div className="index-item" onClick={this.visitPage}>
-        <div className="cover-image">
+      <div className={this.props.listener}>
+      <div id={this.props.listener} className="index-item">
+        <div className="cover-image" onClick={this.visitPage}>
           <img className="cover-image-crop" src={imgUrl} style={imgStyle}></img>
-          <div className="cover-image-overlay"/>
-          <div></div>
+          <div className="cover-image-overlay">
+          {this.props.el.title}
         </div>
-        <div className="author-title"><strong>Created By ~ </strong>{this.props.user}</div>
+        </div>
+        <div className="author-title">
+          <strong>
+            Created By ~
+          </strong>
+          <Link to={"/profile/"+this.props.userId}>
+            {this.props.user}
+          </Link>
+        </div>
+      </div>
       </div>
     );
   }

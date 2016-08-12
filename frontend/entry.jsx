@@ -13,6 +13,8 @@ const ChooseCover = require('./components/choose_cover');
 const CreateNewProject = require('./components/create_new_project');
 const CoverCrop = require('./components/cover_crop');
 const ShowProject = require('./components/show_project');
+const ProjectIndexStore = require('./stores/project_index_store');
+const UserActions = require('./actions/user_actions');
 window.util = Util;
 
 const App = React.createClass({
@@ -50,13 +52,25 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 document.addEventListener('scroll', function(){
+  if($('.listenToMe').length>0){
+    if($(window).height() - ($('#listenToMe').offset().top - $(window).scrollTop()) > 200){
+        if(ProjectIndexStore.getFetchStatus() === false){
+          ProjectIndexStore.setFetchTrue();
+          UserActions.getMoreProjects();
+
+      }
+    }
+  }
   if($('.filter-bar')){
     if(158 < $(window).scrollTop()){
       $('.filter-bar').addClass("filter-bar-fixed");
       $('.index-page').addClass("index-page-add-margin");
+      $('.head-fixed').style("opacity", 0);
     }else{
       $('.filter-bar').removeClass("filter-bar-fixed");
       $('.index-page').removeClass("index-page-add-margin");
+      $('.head-fixed').show();
+
     }
   }
 });

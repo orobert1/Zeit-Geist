@@ -12,19 +12,21 @@ module.exports = React.createClass({
     return({post: ContentStore.getProject()});
   },
   componentDidMount(){
-    ContentStore.addListener(this._change);
+    this.act = ContentStore.addListener(this._change);
     if(ContentStore.getProject().id && ContentStore.getProject().id === this.props.params.id){
 
     }else{
-      ProjectActions.getProject(this.props.params.projectId);
+      this.act = ProjectActions.getProject(this.props.params.projectId);
     }
+  },
+  componentWillUnmount(){
+    this.act.remove();
   },
   submit(){
     ProjectActions.updateProject(this.state.post,this._save_and_reroute);
   },
 
   _save_and_reroute(data){
-    console.log(data);
     this.context.router.push('/index');
   },
   _change(){
