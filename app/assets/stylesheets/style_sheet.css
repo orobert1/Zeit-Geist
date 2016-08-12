@@ -145,7 +145,7 @@ input[type="submit"] {
   width: 180px;
   height: 15px;
   float: left;
-  background-image: url(zeit-geist.png);
+  background-image: url(http://s3.amazonaws.com/zeitgeist-dev/images/image_files/000/000/386/original/zeit-geist.png?1471027520);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -170,7 +170,7 @@ input[type="submit"] {
   position:absolute;
   width:100%;
   top:60px;
-  background-image: url(painting-header.jpg);
+  background-image: url(http://s3.amazonaws.com/zeitgeist-dev/images/image_files/000/000/385/original/painting-header.jpg?1471027431);
   height:auto;
   height: 200px;
 }
