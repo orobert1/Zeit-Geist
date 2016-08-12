@@ -5,6 +5,9 @@ const ContentStore = require('../stores/content_store');
 const ImageStore = require('../stores/images_store');
 
 module.exports = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
   getInitialState(){
     return({project: "", images: ""})
   },
@@ -26,6 +29,12 @@ module.exports = React.createClass({
   __change(){
     this.setState({project: ContentStore.getProject(), images: ImageStore.getImages()});
   },
+  destroy(){
+    ProjectActions.destroyProject(this.props.params.projectId, this.reroute);
+  },
+  reroute(){
+    this.context.router.push('/index');
+  },
 
   render(){
 
@@ -40,6 +49,7 @@ module.exports = React.createClass({
 
     return(
       <div className = "new-project-all">
+        <button className = "destroy" onClick={this.destroy}>Delete Post</button>
         <main className = "new-project-canvas">
           <ul className = "new-project-content">
             <h1 className="create-new-project-title">

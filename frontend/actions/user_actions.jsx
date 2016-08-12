@@ -5,14 +5,21 @@ const Dispatcher = require('../dispatcher/dispatcher');
 const Constants = require('../constants/constants');
 const ProjectIndexStore = require('../stores/project_index_store');
 const ContentStore = require('../stores/content_store')
+const ProjectActions = require("./project_actions");
 module.exports = {
   createUser(data){
     ApiUtil.createUser(data, this.Create_User);
   },
   getMoreProjects(){
+
     ProjectIndexStore.setFetchTrue();
-    this.getUserProfile(ContentStore.getUserProfile().id,
-    ProjectIndexStore.getLastDate(),12);
+    if(window.location.hash.substring(2,6) === "prof"){
+      console.log("Ass")
+      this.getUserProfile(ContentStore.getUserProfile().id,
+      ProjectIndexStore.getLastDate(),12);
+    }else{
+      ProjectActions.loadProjectIndex(ProjectIndexStore.getLastDate(), ProjectActions.loadPosts);
+    }
   },
   getUser(id){
     ApiUtil.getUser(id, this.receiveUser);

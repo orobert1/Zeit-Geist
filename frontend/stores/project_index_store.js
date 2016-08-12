@@ -6,7 +6,7 @@ const Constants = require('../constants/constants');
 
 const ProjectIndexStore = new Store(AppDispatcher);
 let _projectIndex = [];
-let _last_project_date = "";
+let _last_project_date = "1999-08-10T14:13:03.790Z";
 let _fetching_projects = false;
 ProjectIndexStore.setFetchTrue = function(){
    _fetching_projects = true;
@@ -20,6 +20,9 @@ ProjectIndexStore.setFetchFalse = function(){
 }
 ProjectIndexStore.getLastDate = function(){
   return _last_project_date;
+}
+ProjectIndexStore.setLastDate = function(date){
+   _last_project_date = date;
 }
 ProjectIndexStore.getFetchStatus = function(){
   return _fetching_projects;
@@ -37,8 +40,9 @@ ProjectIndexStore.__onDispatch = function(payload){
 
 
   switch(payload.actionType){
-    case Constants.loadIndex:
-    _projectIndex = payload.posts;
+    case Constants.LOAD_INDEX:
+    let projects = payload.posts
+    _projectIndex = _projectIndex.concat(projects);
     this.__emitChange();
     break
     case Constants.RECEIVE_USER_PROJECTS:

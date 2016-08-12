@@ -13,6 +13,15 @@ let _project = {};
 let _images = [];
 let _queue = [];
 let _user_profile = {};
+let _date_last_updated = "1999-08-10T14:13:03.790Z";
+ContentStore.getLastDate = function(){
+  return _date_last_updated;
+}
+
+ContentStore.setLastDate = function(date){
+  _date_last_updated = date;
+}
+
 ContentStore.addContent = function(item){
   _content[item.id] = item;
 };

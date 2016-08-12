@@ -140,15 +140,15 @@ input[type="submit"] {
 }
 
 .logo {
-    margin-top:10px;
-    margin-left: 80px;
-    width: 180px;
-    height: 40px;
-    float: left;
-    background-image: url(zeit-geist.png);
-    background-size:     contain;                      /* <------ */
-   background-repeat:   no-repeat;
-   background-position: center center;
+  margin-top: 22px;
+  margin-left: 80px;
+  width: 180px;
+  height: 15px;
+  float: left;
+  background-image: url(zeit-geist.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 .head-fixed{
   position: fixed;
@@ -414,7 +414,6 @@ input[type="text"]::before{
   padding: 10px 10px 10px 10px;
   min-width: 40px;
   max-height: 40px;
-  background-color: rgb(255, 26, 180);
   margin-top: 10px;
 }
 .header-dropdown:hover .hidden-dropdown{
@@ -737,4 +736,23 @@ strong{
   height: 250px;
   border: rgb(50,50,50) 20px solid;
   margin-right: 20px;
+}
+
+.destroy{
+  color:white;
+  text-align: center;
+  position:fixed;
+  top:200px;
+  width:150px;
+  left:80px;
+  height:50px;
+  border-radius:2px;
+  background-color:rgb(50,50,50);
+  transition: .4s;
+
+}
+.destroy:hover{
+  background-color:rgb(20,20,20);
+  transition: .4s;
+
 }

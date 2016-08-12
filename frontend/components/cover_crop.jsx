@@ -16,11 +16,10 @@ module.exports = React.createClass({
     if(ContentStore.getProject().id && ContentStore.getProject().id === this.props.params.id){
 
     }else{
-      this.act = ProjectActions.getProject(this.props.params.projectId);
     }
   },
   componentWillUnmount(){
-    this.act.remove();
+
   },
   submit(){
     ProjectActions.updateProject(this.state.post,this._save_and_reroute);

@@ -6,10 +6,10 @@ const ProjectIndexStore = require('../stores/project_index_store')
 
 module.exports = React.createClass({
   getInitialState(){
-    return({posts:[], max:30, min:0});
+    return({posts:[], last_created_at:"1999-08-10T14:13:03.790Z"});
   },
   componentDidMount(){
-    ProjectActions.loadProjectIndex(this.state.min,this.state.max);
+    ProjectActions.loadProjectIndex(this.state.last_created_at);
     this.act = ProjectIndexStore.addListener(this._change);
   },
   componentWillUnmount(){
@@ -17,7 +17,13 @@ module.exports = React.createClass({
     this.act.remove();
   },
   _change(){
-    this.setState({posts: ProjectIndexStore.allProjects()});
+    let projCre = "1999-08-10T14:13:03.790Z";
+    if(this.state.posts.length>0){
+      projCre = this.state.posts[this.state.posts.length-1].project.created_at
+    }
+    this.setState({posts: ProjectIndexStore.allProjects(), last_created_at: projCre});
+    ProjectIndexStore.setLastDate(this.state.last_created_at);
+
   },
   populate(){
     let result = [];
@@ -28,15 +34,22 @@ module.exports = React.createClass({
   },
 
   render(){
-
+    let population = <div></div>
+    if(this.state.posts.length >= 1){
+      let last = this.state.posts.length-1;
+      population = this.state.posts.map(function(el, i){
+        let listener = "";
+        if(i===last){
+          listener = "listenToMe";
+        }
+        return ( <IndexItem key={el.project.id} listener={listener} el={el.project} user={el.user.username} userId={el.user_id} className="index-item"/>);
+      });
+      debugger
+    }
     return(
       <div className = "content-container">
         {
-            this.state.posts.map(function(el){
-              return ( <IndexItem key={el.project.id} el={el.project} user={el.username} userId={el.user_id} className="index-item"/> );
-            }
-          )
-
+          population
         }
         {this.props.children}
       </div>

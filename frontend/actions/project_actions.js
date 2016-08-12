@@ -7,9 +7,11 @@ module.exports = {
   },
 
   getProjectImages(id){
-    
-
     ApiUtil.getImages(id, this.getImages);
+  },
+  destroyProject(id, fnc){
+
+    ApiUtil.destroyProject(id, fnc);
   },
 
   updateCoverPhoto(data,fnc){
@@ -21,8 +23,8 @@ module.exports = {
   getProject(id){
     ApiUtil.getProject(id, this.loadPost);
   },
-  loadProjectIndex(min, max){
-    ApiUtil.getProjects(min, max, this.loadPosts);
+  loadProjectIndex(date){
+    ApiUtil.getProjects(date, this.loadPosts);
   },
   getImages(data){
     Dispatcher.dispatch({
@@ -40,7 +42,7 @@ module.exports = {
   },
   loadPosts(posts){
     Dispatcher.dispatch({
-      actionType: Constants.loadIndex,
+      actionType: Constants.LOAD_INDEX,
       posts: posts
     })
   },

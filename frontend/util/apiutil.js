@@ -55,13 +55,24 @@ module.exports = {
       }
     });
   },
+  destroyProject(id,fnc){
+
+    $.ajax({
+      url: `api/projects/${id}`,
+      method: 'DELETE',
+      success(data){
+
+        fnc();
+      }
+    })
+  },
   getUserProfile(id, creation, max, la){
     $.ajax({
       url: `api/users/${id}`,
       method: 'GET',
       data: {last_project_update_creation: creation, payload_size: max},
       success(data){
-        
+
         la(data);
       }
     });
@@ -132,11 +143,12 @@ module.exports = {
       }
     })
   },
-  getProjects(min, max, la){
+  getProjects(date, la){
+
     $.ajax({
       url:'api/projects/',
       method: 'GET',
-      data: {min: min, max: max},
+      data: {date: date},
       success(data){
         la(data);
       }

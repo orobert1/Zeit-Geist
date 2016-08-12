@@ -1,7 +1,10 @@
 class Api::ProjectsController < ApplicationController
   def index
-    a = Project.includes(:user).take(params[:max])
-    @projects = a.map{|proj| {project: proj, username: proj.user.username, user_id: proj.user.id}}
+    @projects = Project.includes(:user)
+    .where("created_at > ?",params[:date])
+    .order("created_at DESC")
+    .limit(10)
+    @projects = @projects.map{|el| {user: el.user,project: el}}
     render json: @projects
   end
 
@@ -22,6 +25,15 @@ class Api::ProjectsController < ApplicationController
   def update
     @project = Project.update(params[:id],project_params)
     render json: @project
+  end
+
+  def destroy
+    @project = Project.find(params[:id]);
+    @project.images.each{|el| el.destroy}
+    @project.descriptions.each{|el| el.destroy}
+    @project.destroy
+    render json: @project
+
   end
 
   private
