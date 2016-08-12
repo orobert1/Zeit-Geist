@@ -3,7 +3,7 @@ class Api::ProjectsController < ApplicationController
     @projects = Project.includes(:user)
     .where("created_at > ?",params[:date])
     .order("created_at DESC")
-    .limit(10)
+    .limit(30)
     @projects = @projects.map{|el| {user: el.user,project: el}}
     render json: @projects
   end

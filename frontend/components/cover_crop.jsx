@@ -18,9 +18,7 @@ module.exports = React.createClass({
     }else{
     }
   },
-  componentWillUnmount(){
-
-  },
+  
   submit(){
     ProjectActions.updateProject(this.state.post,this._save_and_reroute);
   },
