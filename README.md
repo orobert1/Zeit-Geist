@@ -22,6 +22,8 @@ This Page populates itself with all of the Images and Descriptions Associated wi
 ###User Page
 When a user navigates to another User's page or their own page, they trigger an AJAX request that triggers a controller that finds only the 15 most recent projects associated with that User. The front-end stores all of the Projects in a project store and renders them to the page in react content containers. If the visiting user scrolls to the end of the page, they trigger the same AJAX request and the store collects the next 15 most recent posts and re-renders the page with the updated post containers.
 
+![User Page](docs/user_page.png)
+
 ###AWS
 This Site uses AWS after Project Images are sent to the backend to store all Images.
 ###Cover Photos
