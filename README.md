@@ -1,19 +1,16 @@
 # Zeit-Geist #
 
-## *A Portfolio Sharing Website and Behance Clone, which allows users to create and Share Portfolio Pieces. It is a Fullstack Web App using a Rails backend, Postrgesql database, React.js/Flux frontend architecture*
+## *A Portfolio Sharing Website and Behance Clone, which allows users to create and share portfolio pieces. It is a full stack web app using a Rails back-end, Postrgesql database, React.js / Flux front-end architecture*
 
 ###Single Page App
-
-Zeit-Geist is a single page App that renders to the DOM using a single element. This allows for a more fluid User Experience. Zeit-Geist implements front-end User Authentication and a FLUX cycle that rerenders the DOM content based on a Users Sign in status.
+Zeit-Geist is a single page App that renders to the DOM using a single element. This allows for a more fluid User Experience. Zeit-Geist implements front-end User Authentication and a FLUX cycle that re-renders the DOM content based on a Users Sign in status.
 
 ###Projects
-
 The Project Index Page shows a feed of the Twenty most recently posted projects. When a User clicks on a Project, they are directed to that Project's page, where the site makes an API request to the backend, which queries the database for that project and all associated images and descriptions, and then sends that data back to the front-end which updates the content component's state and renders them in the correct order to the DOM.
 <br>
 ![index](docs/index.png)
 
 ###Project Page
-
 This Page populates itself with all of the Images and Descriptions Associated with a project. The Page also features a link to the Project's Author or, if the author is visiting a project that they have created, a link that allows the Author to delete their Project.
 
 ![Project Page](docs/project_page1.png)
