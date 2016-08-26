@@ -10,7 +10,7 @@ module.exports = {
   resolve: {
     extensions: ["", ".js", ".jsx"]
   },
-  'NODE_ENV': "production",
+  NODE_ENV: "production",
   devtool: "source-map",
   module: {
     loaders: [
