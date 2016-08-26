@@ -31,4 +31,6 @@ When a user navigates to another User's page or their own page, they trigger an 
 ![User Page](docs/user_page.png)
 
 ###Project Creation Process
-Upon clicking the "Create Project Button", the user is taken to a page
+Upon clicking the "Create Project Button", the user is taken to a page where they can upload as many images and descriptions as they would like through a process that dynamically resizes the project canvas every time a user clicks the "Add Image" or "AddDescription" button. After pressing the submit button, the user is then asked to choose a project cover photo and then is given an interface for positioning the cover to fill a post container.
+
+![Create Project](docs/project_create.png)
