@@ -11,7 +11,9 @@ The Project Index Page shows a feed of the Twenty most recently posted projects.
 This Page populates itself with all of the Images and Descriptions Associated with a project. The Page also features a link to the Project's Author or, if the author is visiting a project that they have created, a link that allows the Author to delete their Project.
 <br>
 ![Project Page](docs/project_page1.png)
+
 ![Project Page](docs/project_page2.png)
+
 ![Project Page](docs/project_page3.png)
 
 
