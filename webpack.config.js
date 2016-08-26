@@ -10,6 +10,7 @@ module.exports = {
   resolve: {
     extensions: ["", ".js", ".jsx"]
   },
+  'NODE_ENV': JSON.stringify('production'),
   devtool: "source-map",
   module: {
     loaders: [
