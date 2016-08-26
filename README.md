@@ -15,7 +15,13 @@ This Page populates itself with all of the Images and Descriptions Associated wi
 
 ![Project Page](docs/project_page1.png)
 
+
+
+
 ![Project Page](docs/project_page2.png)
+
+
+
 
 ![Project Page](docs/project_page3.png)
 
@@ -24,7 +30,5 @@ When a user navigates to another User's page or their own page, they trigger an 
 
 ![User Page](docs/user_page.png)
 
-###AWS
-This Site uses AWS after Project Images are sent to the backend to store all Images.
-###Cover Photos
-The site also allows a user to select a cover image for a project as well as setting and storing its zoom and position coordinates.
+###Project Creation Process
+Upon clicking the "Create Project Button", the user is taken to a page
