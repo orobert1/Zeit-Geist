@@ -1,4 +1,4 @@
-# [a Zeit-Geist](https://github.com/user/repo/blob/branch/other_file.md)#
+# [Zeit-Geist](https://zeit-geist.herokuapp.com)#
 
 ## *A Portfolio Sharing Website and Behance Clone, which allows users to create and share portfolio pieces. It is a full stack web app using a Rails back-end, Postrgesql database, React.js / Flux front-end architecture*
 
