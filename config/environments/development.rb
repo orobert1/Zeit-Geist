@@ -40,11 +40,11 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   config.paperclip_defaults = {
     storage: :s3,
-    s3_credentials: {
-      bucket: ENV.fetch('zeitgeist-dev'),
-      access_key_id: ENV.fetch('AKIAJRYVENWGSXVPFSSA'),
-      secret_access_key: ENV.fetch('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'),
-      s3_region: ENV.fetch('US Standard'),
+      s3_credentials: {
+          bucket: ENV.fetch('zeitgeist-dev'),
+          access_key_id: ENV.fetch('AKIAJRYVENWGSXVPFSSA'),
+          secret_access_key: ENV.fetch('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'),
+          s3_region: ENV.fetch('Z3AQBSTGFYJSTF'),
       }
-  }
+    }
 end
