@@ -14,3 +14,9 @@ Project.create(title: "Goodguy", user_id: User.find_by( username: "batman" ).id)
 Project.create(title: "Frenchie", user_id: User.find_by( username: "batman" ).id);
 Project.create(title: "Prankster", user_id: User.find_by( username: "batman" ).id);
 Project.create(title: "Love", user_id: User.find_by(username: "batman").id);
+Project.create(title: "WinterMan", user_id: User.find_by( username: "batman" ).id);
+Project.create(title: "AlbumCover", user_id: User.find_by( username: "batman" ).id);
+Project.create(title: "Running", user_id: User.find_by( username: "batman" ).id);
+Project.create(title: "Giraffe", user_id: User.find_by( username: "batman" ).id);
+Project.create(title: "Broken", user_id: User.find_by( username: "batman" ).id);
+Project.create(title: "Stars", user_id: User.find_by(username: "batman").id);
