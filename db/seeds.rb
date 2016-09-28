@@ -5,4 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create(username: "orobert", password: "batman")
+Project.create(title: "Nike", 1);
+Project.create(title: "Football", 1);
+Project.create(title: "FunStuff", 1);
+Project.create(title: "Project 1", 1);
+Project.create(title: "Goodguy", 1);
+Project.create(title: "Frenchie", 1);
+Project.create(title: "Prankster", 1);
+Project.create(title: "Love", 1);

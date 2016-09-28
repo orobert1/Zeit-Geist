@@ -7,6 +7,7 @@
     "test": "test"
   },
   "scripts": {
+    "postinstall": "./node_modules/.bin/webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack --w",
     "heroku-postbuild": "webpack --config webpack.config.prod.js"

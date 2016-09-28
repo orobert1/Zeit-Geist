@@ -10,11 +10,11 @@ module.exports = {
   resolve: {
     extensions: ["", ".js", ".jsx"]
   },
-  // plugins.push(new webpack.DefinePlugin({
-  //   'process.env': {
-  //     'NODE_ENV': process.env.NODE_ENV
-  //   }
-  // }));
+  plugins.push(new webpack.DefinePlugin({
+    'process.env': {
+      'NODE_ENV': process.env.NODE_ENV
+    }
+  }));
   devtool: "source-map",
   module: {
     loaders: [

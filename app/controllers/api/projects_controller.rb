@@ -14,9 +14,11 @@ class Api::ProjectsController < ApplicationController
   end
 
   def create
+    debugger
     @project = Project.new(project_params)
     if @project.save
       render json: @project
+      debugger
     else
       render json: @project.errors.full_messages
     end
