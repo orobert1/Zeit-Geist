@@ -5,11 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Project.create(title: "Nike", 1);
-Project.create(title: "Football", 1);
-Project.create(title: "FunStuff", 1);
-Project.create(title: "Project 1", 1);
-Project.create(title: "Goodguy", 1);
-Project.create(title: "Frenchie", 1);
-Project.create(title: "Prankster", 1);
-Project.create(title: "Love", 1);
+User.create( username: "batman", password: "batmans" );
+Project.create(title: "Nike", User.find_by( username: "batman" ));
+Project.create(title: "Football", User.find_by( username: "batman" ));
+Project.create(title: "FunStuff", User.find_by( username: "batman" ));
+Project.create(title: "Project 1", User.find_by( username: "batman" ));
+Project.create(title: "Goodguy", User.find_by( username: "batman" ));
+Project.create(title: "Frenchie", User.find_by( username: "batman" ));
+Project.create(title: "Prankster", User.find_by( username: "batman" ));
+Project.create(title: "Love", user_id: User.find_by(username: "batman"));
