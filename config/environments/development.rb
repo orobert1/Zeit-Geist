@@ -38,13 +38,13 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  config.paperclip_defaults = {
-    storage: :s3,
-      s3_credentials: {
-          bucket: ENV.fetch('zeitgeist-dev'),
-          access_key_id: ENV.fetch('AKIAJRYVENWGSXVPFSSA'),
-          secret_access_key: ENV.fetch('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'),
-          s3_region: ENV.fetch('Z3AQBSTGFYJSTF'),
-      }
+    config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_region => ENV['Z3AQBSTGFYJSTF'],
+    :s3_credentials => {
+      :bucket => ENV['zeitgeist-dev'],
+      :access_key_id => ENV['AKIAJRYVENWGSXVPFSSA'],
+      :secret_access_key => ENV['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']
     }
+  }
 end
