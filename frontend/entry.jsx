@@ -52,20 +52,21 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 document.addEventListener('scroll', function(){
-  if($('.listenToMe').length>0){
+  if($('#listenToMe') && $('.listenToMe').length>0){
     if($(window).height() - ($('#listenToMe').offset().top - $(window).scrollTop()) > 200){
         if(ProjectIndexStore.getFetchStatus() === false){
           ProjectIndexStore.setFetchTrue();
           UserActions.getMoreProjects();
-
       }
     }
   }
-  if($('.filter-bar')){
+  if($('.filter-bar') && $('.index-page') && $('.head-fixed') ){
     if(158 < $(window).scrollTop()){
       $('.filter-bar').addClass("filter-bar-fixed");
       $('.index-page').addClass("index-page-add-margin");
-      $('.head-fixed').style("opacity", 0);
+      if($('.head-fixed').style){
+        $('.head-fixed').style.opacity = 0;
+      }
     }else{
       $('.filter-bar').removeClass("filter-bar-fixed");
       $('.index-page').removeClass("index-page-add-margin");

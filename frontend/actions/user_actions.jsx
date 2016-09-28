@@ -14,7 +14,6 @@ module.exports = {
 
     ProjectIndexStore.setFetchTrue();
     if(window.location.hash.substring(2,6) === "prof"){
-      console.log("Ass")
       this.getUserProfile(ContentStore.getUserProfile().id,
       ProjectIndexStore.getLastDate(),12);
     }else{
