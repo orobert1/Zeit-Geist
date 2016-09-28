@@ -40,7 +40,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
     config.paperclip_defaults = {
     :storage => :s3,
-    :s3_region => ENV['Z3AQBSTGFYJSTF'],
+    :s3_region => ENV['us-east-1'],
     :s3_credentials => {
       :bucket => ENV['zeitgeist-dev'],
       :access_key_id => ENV['AKIAJRYVENWGSXVPFSSA'],
