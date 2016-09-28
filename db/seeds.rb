@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.create( username: "batman", password: "batmans" );
 Project.create(title: "Nike", user_id: User.find_by( username: "batman" ).id);
-Image.create( project_id: Project.find_by( title: "Nike" ).id, project_index: 1, image_file: "#{Rails.root}/assets/images/files/8968c316771303.5634bd662dcdb.jpeg" );
+Image.create( project_id: Project.find_by( title: "Nike" ).id, project_index: 1, image_file: File.new("#{Rails.root}/assets/images/files/8968c316771303.5634bd662dcdb.jpeg") );
 Project.create(title: "Football", user_id: User.find_by( username: "batman" ).id);
 Project.create(title: "FunStuff", user_id: User.find_by( username: "batman" ).id);
 Project.create(title: "Project 1", user_id: User.find_by( username: "batman" ).id);
