@@ -72,7 +72,6 @@ ContentStore.__onDispatch = function(payload){
   switch(payload.actionType){
     case Constants.CreateProject:
     let project = payload.data;
-    console.log(payload);
     ContentStore.setProject(project);
     let content = ContentStore.allImages();
     let keys = Object.keys(content)

@@ -99,7 +99,6 @@ module.exports = {
       processData: false,
       dataType: "json",
       success(returnData){
-        console.log("Fuckkkk")
         successCallback(returnData);
       },
       errors(returnData){
