@@ -1,0 +1,9 @@
+development:
+  s3_bucket: "zeitgesit-dev"
+
+production:
+  s3_bucket: "zeitgesit-pro"
+
+s3_region:  "us-east-1"
+s3_access_key_id: "AKIAIPOVM427D442MMTA"
+s3_secret_access_key: "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"
