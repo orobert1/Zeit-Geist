@@ -80,6 +80,7 @@ Rails.application.configure do
   :storage => :s3,
       :s3_credentials => {
         :bucket => ENV['zeitgeist-dev'],
+        s3_region: ENV['us-west-2'],
         :access_key_id => ENV['AKIAJRYVENWGSXVPFSSA'],
         :secret_access_key => ENV['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']
       }
