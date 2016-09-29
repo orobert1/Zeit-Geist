@@ -79,6 +79,7 @@ Rails.application.configure do
   config.paperclip_defaults = {
   :storage => :s3,
   :s3_region => ENV['us-east-1'],
+  :region => ENV['us-east-1'],
       :s3_credentials => {
         :bucket => ENV['zeitgeist-dev'],
         :access_key_id => ENV['AKIAJRYVENWGSXVPFSSA'],
