@@ -10,7 +10,9 @@ const Link = require('react-router').Link;
   },
   render(){
     return(
-      <Link to={"/login"} className="logIn">Log In</Link>
+      <div>
+        <Link to={"/login"} className="logIn">Log In</Link>
+      </div>
     );
   }
 });

@@ -16,14 +16,14 @@ module.exports = React.createClass({
   componentDidMount(){
     this.act = CurrentUserStore.addListener(this._change);
     SessionActions.checkCurrentUser();
-    
+
   },
 
   _change(){
     this.setState({logged_in: CurrentUserStore.current_user()});
   },
   determineButton(){
-    if(this.state.logged_in){
+    if(this.state.logged_in === true){
       return (
         <div className="header-dropdown">
           <p className="header-droppdow-inner-text">
@@ -40,7 +40,6 @@ module.exports = React.createClass({
         </div>
       );
     }else if(this.context.router.isActive('/login')){
-       return (<div></div>);
     }else{
       return (<LinkToLogin/>);
     }
