@@ -46,5 +46,5 @@ Rails.application.configure do
         :access_key_id => ENV['AKIAJRYVENWGSXVPFSSA'],
         :secret_access_key => ENV['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']
       }
-    }
+  }
 end
