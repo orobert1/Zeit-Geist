@@ -9,7 +9,7 @@ User.create( username: "batman", password: "batmans" );
 proj = Project.create(title: "Nike", user_id: User.find_by( username: "batman" ).id);
   cov = Image.create( project_id: Project.find_by( title: "Nike" ).id, project_index: 1, image_file: File.new("#{Rails.root}/images/files/2.jpg") );
   Image.create( project_id: Project.find_by( title: "Nike" ).id, project_index: 1, image_file: File.new("#{Rails.root}/images/files/1.jpg") );
-  Image.create( project_id: Project.find_by( title: "Nike" ).id, project_index: 1, image_file: File.new("#{Rails.root}/images/files/4.jpg") );
+  Image.create( project_id: Project.find_by( title: "Nike" ).id, project_index: 1, image_file: File.new("#{Rails.root}/images/files/4.jpeg") );
 Project.create(title: "Football", user_id: User.find_by( username: "batman" ).id);
 Project.create(title: "FunStuff", user_id: User.find_by( username: "batman" ).id);
 Project.create(title: "Project 1", user_id: User.find_by( username: "batman" ).id);
