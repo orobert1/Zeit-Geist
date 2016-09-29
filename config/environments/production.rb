@@ -78,8 +78,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   config.paperclip_defaults = {
   :storage => :s3,
-  :s3_region => ENV['us-west-2'],
-  :region => ENV['us-west-2'],
       :s3_credentials => {
         :bucket => ENV['zeitgeist-dev'],
         :access_key_id => ENV['AKIAJRYVENWGSXVPFSSA'],
