@@ -23,7 +23,7 @@ module.exports = React.createClass({
     this.setState({logged_in: CurrentUserStore.current_user()});
   },
   determineButton(){
-    if(this.state.logged_in === true){
+    if(CurrentUserStore.current_user().id){
       return (
         <div className="header-dropdown">
           <p className="header-droppdow-inner-text">
