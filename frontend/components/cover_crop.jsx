@@ -18,7 +18,7 @@ module.exports = React.createClass({
     }else{
     }
   },
-  
+
   submit(){
     ProjectActions.updateProject(this.state.post,this._save_and_reroute);
   },
