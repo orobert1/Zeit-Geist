@@ -1,8 +1,8 @@
 development:
-  s3_bucket: "zeitgesit-dev"
+  s3_bucket: "zeitgeist-dev"
 
 production:
-  s3_bucket: "zeitgesit-pro"
+  s3_bucket: "zeitgeist-pro"
 
 s3_region:  "us-east-1"
 s3_access_key_id: "AKIAIPOVM427D442MMTA"
