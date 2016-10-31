@@ -33,9 +33,11 @@ module.exports = React.createClass({
     return(
       <div className="log-in-container">
         <form onSubmit={this.submit}>
-          <input type="text" value={this.state.username} onChange={this.updateUsername}></input>
-          <input type="password" value={this.state.password} onChange={this.updatePassword}></input>
-          <input type = "submit" className="sign-in" value="Sign In"></input>
+          <div className = "loginLabel" > Username </div>
+          <input type="text" value={this.state.username} onChange={this.updateUsername} className = "username" ></input>
+          <div className = "loginLabel" > Password </div>
+          <input type="password" value={this.state.password} onChange={this.updatePassword}  className = "password"></input>
+          <input type = "submit" className="sign-in" value="Sign In" ></input>
         </form>
         <Link to={"/new_user"} className="new-user">Create New User</Link>
       </div>

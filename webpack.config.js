@@ -15,6 +15,7 @@ module.exports = {
   //     'NODE_ENV': process.env.NODE_ENV
   //   }
   // }));
+  
   devtool: "source-map",
   module: {
     loaders: [

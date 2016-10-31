@@ -6,9 +6,7 @@ module.exports = React.createClass({
       return (
         <nav className="filter-bar">
           <ul className="filter-options">
-            <li className="filter-options-list-item">Category</li>
-            <li className="filter-options-list-item">Category</li>
-            <li className="filter-options-list-item">Category</li>
+          
 
           </ul>
         </nav>

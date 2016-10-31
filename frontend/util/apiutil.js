@@ -10,7 +10,6 @@ module.exports = {
       },
       success(data){
         la(data);
-
       }
     });
   },
