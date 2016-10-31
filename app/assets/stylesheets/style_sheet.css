@@ -200,41 +200,6 @@ input[type="submit"] {
     margin-left: 8%;
     transition: 1s ease-in-out;
 }
-@media (max-width: 1700px){
-  .content-container{
-    width:950px;
-    margin-left:7%;
-  }
-  .margin-setter{
-    max-width: 500;
-  }
-}
-@media (max-width: 1377px){
-  .content-container{
-    width:678px;
-    margin-left:7%;
-  }
-  .margin-setter{
-    max-width: 1200;
-  }
-  .filter-options-list-item{
-    float:right;
-}
-}
-@media (max-width: 1377px){
-  .content-container{
-    width:678px;
-    margin-left:7%;
-  }
-
-}
-@media (max-width: 1083px){
-  .content-container{
-    width:461px;
-    margin-left:7%;
-  }
-
-}
 
 
 .filter-bar {
@@ -364,9 +329,6 @@ input[type="submit"] {
     width: 350px;
     height: 800px;
     margin-right: 50px;
-    border-left-style: solid;
-    border-left-color: rgb(180,180,180);
-    border-left-width: 2px;
     margin-top: 45px;
 
 }
