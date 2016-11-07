@@ -78,8 +78,3 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: ZeitGeist_production
-  username: ZeitGeist
-  password: <%= ENV['ZeitGeist_DATABASE_PASSWORD'] %>
