@@ -8,8 +8,8 @@ module.exports = {
   logInUser(data){
     ApiUtil.logIn(data, this.Receive_User);
   },
-  logOutUser(){
-    ApiUtil.logOut(this.Remove_User);
+  logOutUser( reset ){
+    ApiUtil.logOut( this.RemoveUser, reset );
   },
   checkCurrentUser(){
     ApiUtil.currentUser(this.Check_User);
@@ -27,9 +27,9 @@ module.exports = {
       user: user
     });
   },
-  Remove_User(user){
+  RemoveUser(user){
     Dispatcher.dispatch({
-      actionType: CONSTANTS.REMOVE_USER
+      actionType: Constants.REMOVE_USER
     });
   }
 

@@ -6,6 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.create( username: "batman", password: "batmans" );
+User.create( username: "glassGuy", password: "frat" );
+User.create( username: "Guest", password: "GuestPassword" );
+
 proj = Project.create(title: "Nike", user_id: User.find_by( username: "batman" ).id);
 
   cov = Image.create( project_id: Project.find_by( title: "Nike" ).id, project_index: 1, image_file: File.new("#{Rails.root}/images/files/12.jpg") );
@@ -98,6 +101,9 @@ proj = Project.create(title: "Broken", user_id: User.find_by( username: "batman"
   proj.update(cover_image: cov.image_file.url)
 
 proj = Project.create(title: "Stars", user_id: User.find_by(username: "batman" ).id);
+
+proj = Project.create(title: "Stars", user_id: User.find_by(username: "Guest" ).id);
+
 
   cov = Image.create( project_id: Project.find_by( title: "Nike" ).id, project_index: 1, image_file: File.new("#{Rails.root}/images/files/25.jpg") );
   Image.create( project_id: proj.id, project_index: 2, image_file: File.new("#{Rails.root}/images/files/1.jpg") );

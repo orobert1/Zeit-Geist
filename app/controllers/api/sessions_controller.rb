@@ -32,7 +32,7 @@ class Api::SessionsController < ApplicationController
 		@user = current_user
 		if @user
 			logout
-			render json: "No User logged in"
+      render json: @user
 		else
 			render(
         json: {

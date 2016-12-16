@@ -1,3 +1,21 @@
+@font-face {
+    font-family: "Graphik-Black";
+    src: asset-url("/assets/fonts/1.otf");
+}
+
+@font-face {
+    font-family: "Graphik-Bold";
+    src: url("fonts/Graphik-Bold.otf");
+}
+@font-face {
+    font-family: "Graphik-Light";
+    src: url("fonts/Graphik-Light.otf");
+}
+@font-face {
+    font-family: "Graphik-Regular";
+    src: url("fonts/Graphik-Regular.otf");
+}
+
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
 section, img, div, h2, p, form,
@@ -730,4 +748,177 @@ strong{
 }
 .header-dropdown{
   color: white;
+}
+
+#coverContainer{
+  overflow: hidden;
+  position: relative;
+}
+
+#coverBackground{
+  float: left;
+  background-image: url('zeitGeistCover.jpg');
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#coverTitle{
+  position: absolute;
+  width: 600px;
+  margin-left: 0%;
+  top: 0%;
+  height: 600px;
+  font-size: 36pt;
+  opacity: .8;
+  text-shadow: 2px 3px 5px rgba(0,0,0,.8);
+  color:rgb(236,9,141);
+  font-family: "Graphik-Black";
+  -webkit-transform: rotate(90deg);
+}
+
+#coverScroll{
+  position: absolute;
+  width: 600px;
+  top: 70%;
+  margin-left: 00px;
+  height: 600px;
+  font-size: 32pt;
+  pointer-events: none;
+  opacity: .8;
+  text-shadow: 2px 3px 5px rgba(0,0,0,.8);
+  color:rgb(236,9,141);
+  font-family: "Graphik-Black";
+  -webkit-transform: rotate(90deg);
+}
+
+#projectIndex{
+  float: left;
+  left: 0px;
+  background-color: white;
+
+  max-height: 20000000px;
+  width: 100%;
+
+}
+
+#signInButton{
+  position: absolute;
+  width: 100px;
+  margin-left: 00px;
+  font-size: 16pt;
+  text-align: center;
+  background-color: rgb(236, 9, 141);
+  padding: 10px;
+  border: 10px solid rgb(152, 197, 234);
+  color: rgb(152, 197, 234);
+  font-family: "Graphik-Black";
+}
+
+#signUpButton{
+  position: absolute;
+  width: 100px;
+  margin-left: 00px;
+  font-size: 16pt;
+  text-align: center;
+  background-color: rgb(236, 9, 141);
+  padding: 10px;
+  border: 10px solid rgb(152,197,234);
+  color:rgb(152,197,234);
+  font-family: "Graphik-Black";
+}
+
+#signUpButton:hover{
+  cursor: pointer;
+}
+
+#head{
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 0px;
+  background-color: white;
+  transition: 1s;
+  opacity: 0;
+  box-shadow: 2px 3px 20px rgba(0,0,0,.8);
+  z-index: 1000000;
+}
+
+#currentUserBadge{
+  z-index: 1000;
+  color: black;
+  font-family: "Graphik-Regular";
+  margin-top: 15px;
+  font-size: 12pt;
+  position: relative;
+  float: right;
+  position: relative;
+}
+
+#currentUserBadge:hover .badgeMenu{
+  opacity: 1;
+  height: 100px
+}
+
+#signInButton:hover{
+  cursor: pointer;
+}
+
+#Public{
+  color: black;
+}
+
+.filter{
+  width: 100px;
+  height: 100px;
+  top: 80px;
+  left: 0px;
+  right: 0px;
+  text-align: center;
+  position: absolute;
+  color: white;
+  font-family: "Graphik-Bold";
+  font-size: 16pt;
+  -webkit-text-stroke: 1px rgb( 200,200,200 );
+}
+
+.filter:hover{
+  cursor: pointer;
+}
+
+.indexItem{
+  background-color: red;
+  float: left;
+  box-shadow: 2px 3px 20px rgba(0,0,0,.8);
+  margin-bottom: 50px;
+  margin-left: 10px;
+  opacity: 0;
+  height: 220px;
+}
+
+.indexCover{
+  width: 100%;
+  height: 100%;
+}
+
+.badgeMenu{
+  padding: 20px;
+  position: absolute;
+  height: 0px;
+  width: 100px;
+  font-family: "Graphik-Bold";
+  background-color: white;
+  line-height: 1.8em;
+  transition: 1s;
+  opacity: 0;
+  overflow: hidden;
+}
+.spacer{
+  float: left;
+  height: 150px;
+  width: 100%;
+  position: relative;
 }

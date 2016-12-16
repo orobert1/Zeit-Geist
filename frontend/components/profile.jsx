@@ -3,7 +3,6 @@ const ReactDOM = require('react-dom');
 const UserStore = require('../stores/user_store');
 const UserActions = require('../actions/user_actions');
 const ProjectIndexStore = require('../stores/project_index_store');
-const IndexItem = require('./index_item');
 const ContentStore = require('../stores/content_store');
 // const Infinite = require('react-infinite');
 module.exports = React.createClass({
@@ -58,7 +57,6 @@ coverImage(){
         if(i===last){
           listener = "listenToMe";
         }
-        return ( <IndexItem key={el.id} listener={listener} el={el} user={user.username} userId={user.id} className="index-item"/>);
       });
     }
     let username = "";

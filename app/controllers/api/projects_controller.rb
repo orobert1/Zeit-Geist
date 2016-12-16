@@ -1,11 +1,38 @@
 class Api::ProjectsController < ApplicationController
   def index
-    @projects = Project.includes(:user)
-    .where("created_at > ?",params[:date])
-    .order("created_at DESC")
-    .limit(30)
-    @projects = @projects.map{|el| {user: el.user,project: el}}
-    render json: @projects
+    if params[:date]
+      @date = params[:date]
+    else
+      @date = Time.now.utc.to_s(:db)
+    end
+
+    if !params[:filters] || params[:filters] == "Public"
+      @projects = Project.includes(:user)
+      .where("created_at < ?", @date)
+      .order("created_at DESC")
+      .limit(30)
+      @projects = @projects.map{|el| {user: el.user,project: el}}
+      render json: @projects
+    elsif params[:filters] == "Following"
+      @projects = Project.includes(:user).joins(:followers)
+      .where("users.id = ? AND projects.created_at < ? ", current_user.id, Time.now.to_s(:db))
+      .order("created_at DESC").limit(30)
+      @projects = @projects.map{|el|
+        {user: el.user,project: el}
+      }
+      render json: @projects
+
+    elsif params[:filters] == "Personal"
+
+      @projects = current_user.projects
+      .where("created_at < ?", @date)
+      .order("created_at DESC")
+      .limit(30)
+      @projects = @projects.map{|el| {user: el.user,project: el}}
+      render json: @projects
+
+    end
+
   end
 
   def show

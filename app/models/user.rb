@@ -18,6 +18,23 @@ class User < ActiveRecord::Base
   attr_reader :password
 
  has_many :projects
+
+ has_many :follower_connections,
+  foreign_key: :follower_id,
+  class_name: "UserConnection"
+
+  has_many :following_connections,
+   foreign_key: :following_id,
+   class_name: "UserConnection"
+
+ has_many :followers, through: :following_connections, source: :follower
+
+ has_many :followings, through: :follower_connections, source: :following
+
+ has_many :followingProjects, through: :followings, source: :projects
+
+
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     return nil if user.nil?

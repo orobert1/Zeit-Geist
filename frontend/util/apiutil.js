@@ -13,11 +13,24 @@ module.exports = {
       }
     });
   },
-  logOut(la){
+
+  getAllProjects( filters, callback ){
+    $.ajax({
+      url: 'api/projects',
+      method: 'GET',
+      data: filters,
+      success( data ){
+        callback( data );
+      }
+    })
+  },
+
+  logOut( la, reset ){
       $.ajax({url: `api/session`,
       method: "DELETE",
-      success(data){
-        la(data);
+      success(){
+        la();
+        reset();
       }
     }
   );

@@ -5,20 +5,34 @@ const Store = require('flux/utils').Store;
 const Constants = require('../constants/constants');
 const UserStore = new Store(AppDispatcher);
 
-let _users = {};
+UserStore.user = {};
 
-UserStore.find = function(id){
-  return _users[id];
-};
+
 
 UserStore.currentUser = function(){
-  return _users;
+  return this.user;
+}
+
+UserStore.removeUser = function(){
+  this.user = {};
+}
+
+UserStore.changeUser = function( user ){
+  this.user = user;
 }
 
 UserStore.__onDispatch = function(payload){
   switch(payload.actionType){
     case Constants.RECEIVE_USER:
-    _users[payload.user.id] = payload.user;
+    this.changeUser( payload.user );
+    this.__emitChange();
+    break;
+    case Constants.CURRENT_USER:
+    this.changeUser( payload.user );
+    this.__emitChange();
+    break;
+    case Constants.REMOVE_USER:
+    this.removeUser();
     this.__emitChange();
     break;
   }

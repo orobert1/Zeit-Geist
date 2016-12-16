@@ -1,17 +1,12 @@
 # == Schema Information
 #
-# Table name: projects
+# Table name: user_connections
 #
-#  id          :integer          not null, primary key
-#  title       :string           not null
-#  user_id     :integer          not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  cover_image :string
-#  margin_top  :integer
-#  margin_left :integer
-#  width       :integer
-#  height      :integer
+#  id           :integer          not null, primary key
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  following_id :integer
+#  follower_id  :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

@@ -21,7 +21,6 @@ const App = React.createClass({
   render(){
     return(
       <div>
-        <Header history={hashHistory}/>
         {this.props.children}
       </div>
     );
@@ -33,7 +32,7 @@ const routes = (
     <IndexRoute component={Index}/>
     <Route path="/index" component = {Index}/>
     <Route path='/login' component={LogIn}/>
-    <Route path='/new_user' component={CreateUser}/>
+    <Route path='/createUser' component={CreateUser}/>
     <Route path='/profile/:userId' component={Profile}/>
     <Route path='/create_new_project' component={CreateNewProject}/>
     <Route path='/choose_project_cover' component={ChooseCover}/>

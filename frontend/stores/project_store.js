@@ -5,9 +5,15 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const ProjectStore = new Store(AppDispatcher);
 
-let _currentProject = "";
-let _projectContent = [];
-let _finished = false;
+ProjectStore.allProjects = [];
+
+ProjectStore.changeAllProjects = function( projects ){
+  this.allProjects = projects;
+}
+
+ProjectStore.getAllProjects = function(){
+  return this.allProjects;
+}
 
 ProjectStore.changeCurrentProject = function(newProject){
   _currentProject = newProject;
@@ -26,8 +32,13 @@ ProjectStore.getProjectContent = function(){
   return _projectContent;
 }
 
-ProjectStore.__onDispatch = function(){
-
+ProjectStore.__onDispatch = function( payload ){
+  switch (payload.actionType){
+    case Constants.RECEIVE_PROJECTS:
+    this.changeAllProjects( payload.data );
+    this.__emitChange();
+    break;
+  }
 }
 
 module.exports = ProjectStore;

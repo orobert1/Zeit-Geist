@@ -2,62 +2,72 @@ const ApiUtil = require('../util/apiutil');
 const Dispatcher = require('../dispatcher/dispatcher')
 const Constants = require('../constants/constants');
 module.exports = {
-  newProject(data, fnc){
-    ApiUtil.createProject(data, this.createProject,fnc)
+  getAllProjects( filters ){
+    ApiUtil.getAllProjects( filters, this.receiveProjectActions );
   },
 
-  getProjectImages(id){
-    ApiUtil.getImages(id, this.getImages);
-  },
-  destroyProject(id, fnc){
-
-    ApiUtil.destroyProject(id, fnc);
-  },
-
-  updateCoverPhoto(data,fnc){
-    ApiUtil.editProject(data,fnc);
-  },
-  updateProject(data,fnc){
-    ApiUtil.editProject(data,fnc);
-  },
-  getProject(id){
-    ApiUtil.getProject(id, this.loadPost);
-  },
-  loadProjectIndex(date){
-    ApiUtil.getProjects(date, this.loadPosts);
-  },
-  getImages(data){
+  receiveProjectActions( data ){
     Dispatcher.dispatch({
-      actionType: Constants.GetImages,
+      actionType: Constants.RECEIVE_PROJECTS,
       data: data
-    });
-  },
-
-  createProject(data, fnc){
-    Dispatcher.dispatch({
-      actionType: Constants.CreateProject,
-      data: data,
-      fnc: fnc
-    });
-  },
-  loadPosts(posts){
-    Dispatcher.dispatch({
-      actionType: Constants.LOAD_INDEX,
-      posts: posts
-    })
-  },
-  addImageToImageStore(img){
-    Dispatcher.dispatch({
-      actionType: Constants.AddImage,
-      img: img
-    })
-  },
-  loadPost(post){
-
-    Dispatcher.dispatch({
-      actionType: Constants.GET_PROJECT,
-      post: post
     })
   }
+  // newProject(data, fnc){
+  //   ApiUtil.createProject(data, this.createProject,fnc)
+  // },
+  //
+  // getProjectImages(id){
+  //   ApiUtil.getImages(id, this.getImages);
+  // },
+  // destroyProject(id, fnc){
+  //
+  //   ApiUtil.destroyProject(id, fnc);
+  // },
+  //
+  // updateCoverPhoto(data,fnc){
+  //   ApiUtil.editProject(data,fnc);
+  // },
+  // updateProject(data,fnc){
+  //   ApiUtil.editProject(data,fnc);
+  // },
+  // getProject(id){
+  //   ApiUtil.getProject(id, this.loadPost);
+  // },
+  // loadProjectIndex(date){
+  //   ApiUtil.getProjects(date, this.loadPosts);
+  // },
+  // getImages(data){
+  //   Dispatcher.dispatch({
+  //     actionType: Constants.GetImages,
+  //     data: data
+  //   });
+  // },
+
+  // createProject(data, fnc){
+  //   Dispatcher.dispatch({
+  //     actionType: Constants.CreateProject,
+  //     data: data,
+  //     fnc: fnc
+  //   });
+  // },
+  // loadPosts(posts){
+  //   Dispatcher.dispatch({
+  //     actionType: Constants.LOAD_INDEX,
+  //     posts: posts
+  //   })
+  // },
+  // addImageToImageStore(img){
+  //   Dispatcher.dispatch({
+  //     actionType: Constants.AddImage,
+  //     img: img
+  //   })
+  // },
+  // loadPost(post){
+  //
+  //   Dispatcher.dispatch({
+  //     actionType: Constants.GET_PROJECT,
+  //     post: post
+  //   })
+  // }
 
 };

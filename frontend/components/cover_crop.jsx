@@ -1,6 +1,5 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const IndexItem = require('./index_item');
 const ContentStore = require('../stores/content_store');
 const ProjectActions = require('../actions/project_actions');
 const CropIndexItem = require('./crop_index_item');
