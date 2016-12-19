@@ -19,7 +19,8 @@ class Project < ActiveRecord::Base
   belongs_to :user
   has_many :images
   has_many :descriptions
-
-  has_many :followers, through: :user, source: :followers 
+  has_many :likes
+  has_many :likers, through: :likes, source: :user
+  has_many :followers, through: :user, source: :followers
 
 end

@@ -1,7 +1,7 @@
 class Api::SessionsController < ApplicationController
 
   def show
-    if current_user
+    if logged_in?
       render json: current_user
     else
       render json: {}

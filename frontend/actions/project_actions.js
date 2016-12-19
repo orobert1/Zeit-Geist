@@ -1,17 +1,51 @@
 const ApiUtil = require('../util/apiutil');
 const Dispatcher = require('../dispatcher/dispatcher')
 const Constants = require('../constants/constants');
+const ProjectStore = require('../stores/project_store');
 module.exports = {
   getAllProjects( filters ){
     ApiUtil.getAllProjects( filters, this.receiveProjectActions );
   },
+
+  getProject( id ){
+    ApiUtil.getProject( id, this.receiveProject )
+  },
+
+  RemoveAllProjects(){
+    Dispatcher.dispatch({
+      actionType: Constants.REMOVEALLPROJECTS,
+    })
+  },
+
+  changeFilter( filter ){
+    Dispatcher.dispatch({
+      actionType: Constants.CHANGEFILTER,
+      filter: filter
+    })
+  },
+
+  removeProject(){
+    Dispatcher.dispatch({
+      actionType: Constants.REMOVE_PROJECT,
+    })
+  },
+
 
   receiveProjectActions( data ){
     Dispatcher.dispatch({
       actionType: Constants.RECEIVE_PROJECTS,
       data: data
     })
+  },
+
+  receiveProject( data ){
+    Dispatcher.dispatch({
+      actionType: Constants.RECEIVE_PROJECT,
+      data: data
+    })
   }
+
+
   // newProject(data, fnc){
   //   ApiUtil.createProject(data, this.createProject,fnc)
   // },

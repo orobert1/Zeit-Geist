@@ -10,18 +10,8 @@ module.exports = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
-  getInitialState(){
-    return({logged_in: CurrentUserStore.current_user()});
-  },
-  componentDidMount(){
-    this.act = CurrentUserStore.addListener(this._change);
-    SessionActions.checkCurrentUser();
 
-  },
 
-  _change(){
-    this.setState({logged_in: CurrentUserStore.current_user()});
-  },
   determineButton(){
     if(CurrentUserStore.current_user().id){
       return (
@@ -31,7 +21,7 @@ module.exports = React.createClass({
           </p>
           <ul className="hidden-dropdown">
             <li>
-              <Link to={"/profile/"+CurrentUserStore.current_user().id}>Profile</Link>
+              <Link to={"/profile/" + CurrentUserStore.current_user().id}>Profile</Link>
             </li>
             <li>
               <LinkToLogOut/>

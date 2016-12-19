@@ -165,12 +165,13 @@ module.exports = {
       }
     })
   },
-  getProject(id, la){
+
+  getProject(id, callback){
     $.ajax({
       url: `api/projects/${id}`,
       method: 'GET',
       success(data){
-        la(data);
+        callback(data);
       }
     })
   }

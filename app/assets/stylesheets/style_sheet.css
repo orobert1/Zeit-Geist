@@ -799,7 +799,7 @@ strong{
   float: left;
   left: 0px;
   background-color: white;
-
+  min-height: 1200px;
   max-height: 20000000px;
   width: 100%;
 
@@ -853,12 +853,22 @@ strong{
   font-family: "Graphik-Regular";
   margin-top: 15px;
   font-size: 12pt;
-  position: relative;
   float: right;
   position: relative;
 }
 
+#homeButton{
+  color: black;
+  margin-left: 50px;
+  font-family: "Graphik-Regular";
+  margin-top: 15px;
+  font-size: 12pt;
+  width: 200px;
+  float: left;
+}
+
 #currentUserBadge:hover .badgeMenu{
+  padding: 20px;
   opacity: 1;
   height: 100px
 }
@@ -871,17 +881,23 @@ strong{
   color: black;
 }
 
+#index{
+  width: 100%;
+}
+.filterContainer{
+  display: block;
+  width: 300px;
+  margin: 0 auto;
+}
+
 .filter{
-  width: 100px;
-  height: 100px;
-  top: 80px;
-  left: 0px;
-  right: 0px;
-  text-align: center;
-  position: absolute;
+  width: 33%;
+  float: left;
+  text-align: left;
   color: white;
   font-family: "Graphik-Bold";
-  font-size: 16pt;
+  font-size: 14pt;
+  margin-left: 0px;
   -webkit-text-stroke: 1px rgb( 200,200,200 );
 }
 
@@ -889,23 +905,38 @@ strong{
   cursor: pointer;
 }
 
-.indexItem{
+.targetItem{
   background-color: red;
   float: left;
-  box-shadow: 2px 3px 20px rgba(0,0,0,.8);
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   margin-left: 10px;
   opacity: 0;
-  height: 220px;
+  height: 240px;
 }
 
 .indexCover{
   width: 100%;
   height: 100%;
+  opacity: 1;
+}
+
+.absoluteImg{
+  position: absolute;
+  top: 0px;
+  opacity: 1;
+  height: 100%;
+  width: 100%;
+  left: 0px;
+  display: none;
+  box-shadow: 2px 3px 20px rgba(0,0,0,.8);
+  background-color: red;
+}
+
+.absoluteImg{
+  cursor: pointer;
 }
 
 .badgeMenu{
-  padding: 20px;
   position: absolute;
   height: 0px;
   width: 100px;
@@ -913,12 +944,208 @@ strong{
   background-color: white;
   line-height: 1.8em;
   transition: 1s;
-  opacity: 0;
+  opacity: 1;
   overflow: hidden;
 }
-.spacer{
+#projectViewPane{
+  width: 0%;
+  position: fixed;
+  top: 0px;
+  right:0px;
+  height: 100%;
+  max-height: 20000px;
+  overflow: scroll;
+  transition: 1s;
+  overflow-x:hidden;
+  border-left: 4px solid black;
+  overflow-y : scroll;
+}
+.block{
+  float:left;
+  margin: 20%;
+  width: 60%;
+  height: 500px;
+  background-color: white;
+}
+.author{
   float: left;
-  height: 150px;
+  width: 100%;
+  text-align: left;
+  margin-left: 20px;
+  font-family: "Graphik-light";
+  font-size: 10vw;
+  margin-top: 200px;
+  margin-bottom: 100px;
+
+}
+.userName{
+  color: rgb(150,150,150);
+  transition: .4s;
+}
+.userName:hover{
+  cursor: pointer;
+  color: black;
+  transition: .4s;
+
+}
+
+
+#viewPaneProjectTitle{
+  position: fixed;
+  right: 62%;
+  top: 60%;
+  -webkit-transform: rotate(-90deg);
+
+}
+.fixedTitleContainer{
+  position: relative;
+  width: 100%;
+}
+
+.bottomTitleContainer{
+  position: absolute;
+  bottom: 0;
+  line-height: 0px;
+  text-align: right;
+  font-family: "Graphik-Bold";
+  font-size: 3vh;
+
+}
+
+#absoluteContainer{
+  z-index: 1000000000000;
+}
+
+#viewPaneProjectAuthor{
+  font-family: "Graphik-Bold";
+  margin-top: 260px;
+  margin-left: 2%;
+  color: black;
+  float: left;
+  width: 100%;
+  font-size: 100pt;
+  letter-spacing: 2px;
+  text-align: left;
+}
+
+
+.projectImage{
+  float: left;
+  margin-top: 20px;
+  width: 80%;
+  box-shadow: 2px 3px 20px rgba(0,0,0,.8);
+  margin-left: 2%;
+  height: auto;
+}
+
+.scrollPane{
+  height: 100%;
   width: 100%;
   position: relative;
+  overflow: hidden;
+  overflow-y: scroll;
+  overflow: scroll;
+}
+
+.scrollable{
+  height:100%;
+  width:40%;
+  overflow: hidden;
+  overflow-y: scroll;
+  transition: 3s;
+  margin: 0 auto;
+}
+
+.xContainer{
+  float: right;
+  position: relative;
+}
+
+.x{
+  position: absolute;
+  top: 100px;
+  text-align: right;
+  right: 100px;
+  font-size: 36pt;
+  padding: 10px;
+  z-index: 100000;
+  transition: .4s;
+}
+
+.x:hover{
+  cursor: pointer;
+  color: rgb(200,200,200);
+  transition: .4s;
+
+}
+.topMargin{
+  float: left;
+  height: 100px;
+  width: 100%;
+
+}
+.tagContainer{
+  max-height: 400px;
+  position: relative;
+  margin: auto 0;
+  height: auto;
+  min-height: 100px;
+  float: left;
+  width: 100%;
+
+}
+textarea, input { outline: none; }
+input {-webkit-appearance: none; box-shadow: none !important; }
+#tagInput{
+  color: rgb(150,150,150);
+  font-family: "Graphik-Bold";
+  font-size: 24pt;
+  background-color: white;
+  border: 1px solid rgb(150,150,150);
+  transition: .4s;
+  margin: 0 auto;
+
+  width: 300px;
+  display: block;
+}
+#tagButton{
+  color: rgb(150,150,150);
+  font-family: "Graphik-Bold";
+  font-size: 14pt;
+  background-color: white;
+  border: 1px solid rgb(150,150,150);
+  transition: .4s;
+  margin: 0 auto;
+  width: 300px;
+  display: block;
+
+}
+
+.inputContainer{
+  width: 100%;
+  margin-top: 10px;
+  clear: both;
+  float: left;
+}
+
+#tagButton:hover{
+  background-color: rgb(230,230,230);
+  transition: .4s;
+
+
+}
+.bigSpace{
+  width: 100%;
+  height: 200px;
+  margin-bottom: 100px;
+}
+.spacer{
+  max-height: 300px;
+  height: auto;
+  width: 100%;
+  margin-top: 100px;
+  margin: auto 100;
+  position: relative;
+
+
 }

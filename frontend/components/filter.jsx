@@ -8,8 +8,6 @@ module.exports = React.createClass({
     $( '.filter' ).css({ transitions: "1s" });
     let filter = document.getElementById( this.props.name );
     let grid = new Grid();
-    grid.picWidth( filter, 4 );
-    grid.alignLeft( filter, this.props.left );
 
   },
 
@@ -20,7 +18,12 @@ module.exports = React.createClass({
   },
 
   click(){
+    $('#absoluteContainer').children().fadeOut( 200 );
+    window.setTimeout( function(){
+      $('#absoluteContainer').children().remove();
+    }, 200 )
     let filterPackage = { filters: this.props.name };
+    ProjectActions.changeFilter( this.props.name );
     ProjectActions.getAllProjects( filterPackage );
     this.changeDecoration();
   },

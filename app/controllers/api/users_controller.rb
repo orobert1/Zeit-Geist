@@ -35,9 +35,15 @@ class Api::UsersController < ApplicationController
 
   def show
 
+    if params[:date]
+      @date = params[:date]
+    else
+      @date = Time.now.utc.to_s(:db)
+    end
+
     @projects = Project.includes(:user)
     .where("user_id = ? AND created_at > ?",
-    params[:id],params[:last_project_update_creation])
+    params[:id],params[:date])
     .order("created_at ASC")
     .take(params[:payload_size])
 

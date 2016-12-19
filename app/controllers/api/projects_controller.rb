@@ -36,16 +36,16 @@ class Api::ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id]);
-    render json: @project
+    @project = Project.includes(:images).where("projects.id = ?", params[:id]).first
+    @images = @project.images.map{ |el| { url: el.image_file.url, index: el.project_index } }
+    @user = User.find(@project.user_id)
+    render json: { cover: @project, images: @images, user: @user }
   end
 
   def create
-    debugger
     @project = Project.new(project_params)
     if @project.save
       render json: @project
-      debugger
     else
       render json: @project.errors.full_messages
     end

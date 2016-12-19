@@ -1,7 +1,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const CurrentUserStore = require('../stores/current_user_store');
-const sessionActions = require('../actions/sessionActions');
+const SessionActions = require('../actions/sessionActions');
 const Link = require('react-router').Link;
 
 module.exports = React.createClass({
@@ -21,14 +21,18 @@ module.exports = React.createClass({
     this.setState({username: e.target.value});
   },
   submit(){
-    sessionActions.logInUser({username: this.state.username,
-    password: this.state.password});
-    if(CurrentUserStore.current_user){
-      this.context.router.push("/index");
-    }else{
+    SessionActions.logInUser( {
+      username: this.state.username,
+      password: this.state.password
+    } );
+    window.setTimeout(function(){
+      this.context.router.push('/index');
 
-    }
+    }.bind( this ), 200);
+
   },
+
+
   render(){
     return(
       <div className="log-in-container">

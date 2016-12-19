@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
 
  has_many :projects
 
+ has_many :likes
+
+ has_many :liked_projects, through: :likes, source: :project
+
  has_many :follower_connections,
   foreign_key: :follower_id,
   class_name: "UserConnection"

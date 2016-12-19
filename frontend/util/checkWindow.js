@@ -11,6 +11,15 @@ checkWindow.prototype.registerElement = function( element, fun ){
   this.elements.push( toReg );
 }
 
+checkWindow.prototype.unRegisterElement = function( element ){
+  for (var i = 0; i < this.elements.length; i++) {
+    let el = this.elements[i];
+    if( this.elements[i].element === element){
+      this.elements.splice( i, 1 );
+    }
+  }
+}
+
 checkWindow.prototype.run = function(){
   let top = window.scrollY;
   for( var i = 0 ; i < this.elements.length; i++ ){

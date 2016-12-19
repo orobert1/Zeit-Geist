@@ -109,3 +109,18 @@ proj = Project.create(title: "Stars", user_id: User.find_by(username: "Guest" ).
   Image.create( project_id: proj.id, project_index: 2, image_file: File.new("#{Rails.root}/images/files/1.jpg") );
   Image.create( project_id: proj.id, project_index: 3, image_file: File.new("#{Rails.root}/images/files/4.jpeg") );
   proj.update(cover_image: cov.image_file.url)
+
+lastnames = [ "man", "guy", "friend", "feet", "troll", "potato", "ticklemonster", "thoughleader" ]
+adjectives = [ "witty", "red", "honest", "tasty", "silly", "crazy", "lazy", "sleepy" ]
+nouns = [ "Tree", "Velvet", "Table", "Glue", "Woods", "Steel", "Baby", "Alien" ]
+
+lastnames.map{ |el|
+  adjectives.map{ |el1|
+    nouns.map{ |el2|
+      username = el1 + el2 + el
+      password = username + "password"
+      user = User.create( username: username, password: password );
+
+    }
+  }
+}
