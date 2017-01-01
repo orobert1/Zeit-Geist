@@ -4,11 +4,35 @@ const Constants = require('../constants/constants');
 const ProjectStore = require('../stores/project_store');
 module.exports = {
   getAllProjects( filters ){
+
     ApiUtil.getAllProjects( filters, this.receiveProjectActions );
   },
 
   getProject( id ){
     ApiUtil.getProject( id, this.receiveProject )
+  },
+
+  createProject( payload ){
+    ApuUtil.createProject( payload, this.receiveCreatedProject );
+  },
+
+  triggerProjectCreationPane(){
+    Dispatcher.dispatch({
+      actionType: Constants.TRIGGERPROJECTCREATION
+    })
+  },
+
+  receiveCreatedProject( project ){
+    Dispatcher.dispatch({
+      actionType: Constants.RECEIVECREATEDPROJECT,
+      project: project
+    })
+  },
+
+  triggerProjectCreationPaneRemoval(){
+    Dispatcher.dispatch({
+      actionType: Constants.TRIGGERPROJECTCREATIONREMOVAL
+    })
   },
 
   RemoveAllProjects(){

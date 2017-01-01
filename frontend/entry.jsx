@@ -5,7 +5,6 @@ const ReactDOM = require('react-dom');
 const Index = require('./components/index');
 const Util = require('./util/apiutil');
 const LogIn = require('./components/login');
-const CurrentUserStore = require('./stores/current_user_store');
 const Header = require('./components/header.jsx');
 const CreateUser = require('./components/create_user');
 const Profile = require('./components/profile');

@@ -8,7 +8,7 @@ const SessionStore = require( '../stores/user_store' );
 const ProjectStore = require( '../stores/project_store' );
 const IndexItem = require( './indexItem' );
 const FilterBar = require('./filterBar');
-
+const absoluteProjects = require('../util/absoluteProject');
 module.exports = React.createClass({
 
   componentDidMount(){
@@ -18,6 +18,7 @@ module.exports = React.createClass({
     let projList = ProjectStore.addListener( this.__projChange );
     this.setState( { user: this.props.user } );
     ProjectActions.getAllProjects( {} );
+    $(window).resize(this.state.absoluteProjects.shuffleAll.bind( this.state.absoluteProjects ));
   },
 
   componentWillReceiveProps( props ){
@@ -26,12 +27,15 @@ module.exports = React.createClass({
 
   __projChange(){
     let projects = ProjectStore.getAllProjects();
-    this.setState({ projects: projects });
+    if( projects.length > 0 ){
+      this.state.absoluteProjects.registerProjectLength( projects.length );
+    }
+    this.setState({ projects: projects, offset: this.state.offset + projects.length });
 
   },
 
   getInitialState(){
-    return({ user: {}, projects: {}, break: false });
+    return({ user: {}, projects: {}, break: false, offset: 0, absoluteProjects: new absoluteProjects() });
   },
 
 
@@ -46,16 +50,25 @@ module.exports = React.createClass({
     }
   },
 
+  filter(){
+    if( this.state.user ){
+      return(
+        <FilterBar />
+      );
+    }
+  },
+
   projects(){
     if(this.state.user.id){
       if( this.state.projects.length ){
         return this.state.projects.map(function( el, index ){
           return (
             <IndexItem element = {el}
-              index = {index}
+              index = { this.state.offset + index}
               fade = { this.state.break }
+              absolute = { this.state.absoluteProjects }
               pane = { this.props.pane }
-              key = {index} />
+              key = { this.state.offset + index } />
           )
         }.bind(this))
       }
@@ -65,7 +78,8 @@ module.exports = React.createClass({
   render(){
     return(
       <div id = "projectIndex">
-        <FilterBar />
+        <FilterBar/>
+        <div className = "woof"/>
         {
           this.projects()
         }

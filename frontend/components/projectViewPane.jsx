@@ -17,7 +17,7 @@ module.exports = React.createClass({
     let grid = new Grid();
     $( ".projectImage" ).hover(
       function(){
-        $(".absoluteImg").css({ transition: "1s", opacity: .0 })
+        $(".absoluteImg").css({ transition: ".6s", opacity: .08 })
       },
       function(){
       }
@@ -26,7 +26,7 @@ module.exports = React.createClass({
 
     $( "#projectViewPane" ).hover(
       function(){
-        $(".absoluteImg").css({ transition: "1s", opacity: .0 })
+        $(".absoluteImg").css({ transition: ".6s", opacity: .08 })
       },
       function(){
         $(".absoluteImg").css({ opacity: 1 })
@@ -36,7 +36,7 @@ module.exports = React.createClass({
 
     $( ".scrollPane" ).hover(
       function(){
-        $(".absoluteImg").css({ transition: "1s", opacity: .0 })
+        $(".absoluteImg").css({ transition: ".6s", opacity: .08 })
       },
       function(){
         $(".absoluteImg").css({ opacity: 1 })
@@ -46,7 +46,7 @@ module.exports = React.createClass({
 
     $( ".absoluteImg" ).hover(
       function(){
-        $("#projectViewPane").css({ transition: "1s", opacity: .2 })
+        $("#projectViewPane").css({ transition: ".6s", opacity: .2 })
       },
       function(){
         $("#projectViewPane").css({ opacity: 1 })

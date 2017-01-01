@@ -37,6 +37,9 @@ class User < ActiveRecord::Base
 
  has_many :followingProjects, through: :followings, source: :projects
 
+ has_many :tags, through: :projects, source: :tags
+
+
 
 
   def self.find_by_credentials(username, password)

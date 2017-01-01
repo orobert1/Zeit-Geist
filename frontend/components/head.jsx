@@ -3,7 +3,9 @@ const ReactDOM = require('react-dom');
 const Grid = require('../util/grid')
 const $ = require('jquery');
 const SessionActions = require('../actions/sessionActions');
-
+const projectActions = require('../actions/project_actions');
+const FilterBar = require('./filterBar');
+const Tags = require('./tags');
 
 
 module.exports = React.createClass({
@@ -51,14 +53,36 @@ module.exports = React.createClass({
 
   },
 
+  tagging(){
+    if( this.context.router.isActive('/') || this.context.router.isActive('/index') ){
+      return(
+        <Tags/>
+      )
+    }
+  },
+
   navHome(){
     this.context.router.push('/index')
+  },
+
+  filter(){
+    if( this.props.user ){
+      return(
+        <FilterBar />
+      );
+    }
+  },
+
+  addProject(){
+    console.log("clik");
+    projectActions.triggerProjectCreationPane();
   },
 
   render(){
     return(
       <div id = "head">
         <div id = "homeButton" onClick = { this.navHome }> Home </div>
+        <div id = "addProjectButton" onClick = { this.addProject } > Add Project </div>
         <div id = "currentUserBadge">
           {
             this.user()

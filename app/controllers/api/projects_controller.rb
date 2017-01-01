@@ -6,31 +6,28 @@ class Api::ProjectsController < ApplicationController
       @date = Time.now.utc.to_s(:db)
     end
 
-    if !params[:filters] || params[:filters] == "Public"
-      @projects = Project.includes(:user)
-      .where("created_at < ?", @date)
-      .order("created_at DESC")
-      .limit(30)
-      @projects = @projects.map{|el| {user: el.user,project: el}}
-      render json: @projects
-    elsif params[:filters] == "Following"
-      @projects = Project.includes(:user).joins(:followers)
-      .where("users.id = ? AND projects.created_at < ? ", current_user.id, Time.now.to_s(:db))
-      .order("created_at DESC").limit(30)
-      @projects = @projects.map{|el|
-        {user: el.user,project: el}
-      }
-      render json: @projects
+    if params[:filter] && params[:filter][:tags]
+      @tags = params[:filter][:tags]
+    else
+      @tags = nil
+    end
 
-    elsif params[:filters] == "Personal"
+    if params[:filters]
+      @filter = params[:filters]
+    end
 
-      @projects = current_user.projects
-      .where("created_at < ?", @date)
-      .order("created_at DESC")
-      .limit(30)
-      @projects = @projects.map{|el| {user: el.user,project: el}}
+    if @filter == "Public"
+      @projects = Project.index( @date, @tags )
       render json: @projects
-
+    elsif @filter == "Following"
+      @projects = Project.following( @date, @tags, current_user )
+      render json: @projects
+    elsif @filter == "Personal"
+      @projects = Project.personal( @date, @tags, current_user )
+      render json: @projects
+    else
+      @projects = Project.index( @date, @tags )
+      render json: @projects
     end
 
   end
@@ -43,12 +40,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
-    if @project.save
-      render json: @project
-    else
-      render json: @project.errors.full_messages
-    end
+    debugger
   end
 
   def update

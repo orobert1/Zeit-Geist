@@ -18,10 +18,6 @@ module.exports = React.createClass({
   },
 
   click(){
-    $('#absoluteContainer').children().fadeOut( 200 );
-    window.setTimeout( function(){
-      $('#absoluteContainer').children().remove();
-    }, 200 )
     let filterPackage = { filters: this.props.name };
     ProjectActions.changeFilter( this.props.name );
     ProjectActions.getAllProjects( filterPackage );

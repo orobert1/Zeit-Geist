@@ -11,18 +11,26 @@ module.exports = React.createClass({
       return({ filter: "public" });
     },
 
-
+    toggleTags(){
+      let tagControls = document.getElementById( "tagControls" );
+      if( $(tagControls).css( 'display' ) === "none" ){
+        $(tagControls).css({ display: "block", opacity: 1 })
+      }else{
+        $(tagControls).css({ display: "none", opacity: 0 })
+      }
+    },
 
     render(){
       return (
-        <div className = "bigSpace">
+        <div className = "filterBar">
           <div className = "spacer">
-            <div className = "filterContainer">
-              <Filter name = "Public" left = { 2 } />
-              <Filter name = "Following" left = { 5 } />
-              <Filter name = "Personal" left = { 8 } />
+            <Filter name = "Public" left = { 2 } />
+            <Filter name = "Following" left = { 5 } />
+            <Filter name = "Personal" left = { 8 } />
+            <div className = "settings" onClick = { this.toggleTags }/>
+            <div className = "tagOptionsContainer">
+              <Tags/>
             </div>
-            <Tags/>
           </div>
         </div>
       );

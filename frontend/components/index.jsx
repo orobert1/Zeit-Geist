@@ -2,19 +2,20 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const FixedBackground = require('./fixed_background');
 const IndexBody = require('./index_body.jsx');
-const Actions = require('../actions/sessionActions');
+const SessionActions = require('../actions/sessionActions');
 const UserStore = require('../stores/user_store');
 const Cover = require( './cover' );
 const ProjectIndex = require('./projectIndex');
 const ProjectStore = require('../stores/project_store');
-const SessionActions = require( '../actions/sessionActions' );
 const checkWindow = require('../util/checkWindow');
 const Head = require('./head');
+const FilterBar = require('./filterBar');
 const ProjectViewPane = require('./projectViewPane');
+const CreateProject = require('./createProject.jsx');
 const $ = require('jquery');
 const Index = React.createClass({
   getInitialState(){
-    return({ user: {}, window: new checkWindow(), project: {}, pane: false })
+    return({ user: {}, window: new checkWindow(), project: {}, pane: false, createProject: false })
   },
 
 
@@ -23,19 +24,27 @@ const Index = React.createClass({
     this.projectIndex = document.getElementById('projectIndex');
     this.state.window.registerElement( projectIndex, this.signInAsGuest );
     window.addEventListener( "scroll", this.state.window.run.bind( this.state.window ) );
-    Actions.checkCurrentUser();
+    SessionActions.checkCurrentUser();
     this.list = UserStore.addListener( this.__change );
     this.projectList = ProjectStore.addListener( this.__changeProject );
   },
 
   __changeProject(){
     let project = ProjectStore.getProject();
-    if( project.cover ){
+    let createProject = ProjectStore.getProjectCreationStatus();
+    if( createProject ){
       this.slideToTheLeft();
+      project = {};
     }else{
-      this.slideToTheRight();
+      if( project.cover ){
+        this.slideToTheLeft();
+        this.setState({ pane: true });
+      }else{
+        this.slideToTheRight();
+        this.setState({ pane: false });
+      }
     }
-    this.setState({ project: project })
+    this.setState({ project: project, createProject: createProject })
   },
 
   showHead(){
@@ -83,19 +92,17 @@ const Index = React.createClass({
   viewPane(){
     if( this.state.project.cover ){
       return <ProjectViewPane project = { this.state.project }/>
+    }else if (this.state.createProject) {
+      return <CreateProject></CreateProject>
     }
   },
 
   slideToTheLeft(){
-
     $('#projectIndex').css({ width: "55%" });
-    this.setState({ pane: true })
   },
 
   slideToTheRight(){
-
     $('#projectIndex').css({ width: "100%" });
-    this.setState({ pane: false })
   },
 
   render(){

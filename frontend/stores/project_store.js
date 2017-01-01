@@ -8,9 +8,22 @@ const ProjectStore = new Store(AppDispatcher);
 ProjectStore.allProjects = [];
 ProjectStore.project = {};
 ProjectStore.filter = {};
+ProjectStore.createProject = false;
 
 ProjectStore.changeAllProjects = function( projects ){
   this.allProjects = projects;
+}
+
+ProjectStore.setCreateProjectTrue = function(){
+  this.createProject = true;
+}
+
+ProjectStore.setCreateProjectFalse = function(){
+  this.createProject = false;
+}
+
+ProjectStore.getProjectCreationStatus = function(){
+  return this.createProject;
 }
 
 ProjectStore.getAllProjects = function(){
@@ -61,6 +74,14 @@ ProjectStore.__onDispatch = function( payload ){
     break;
     case Constants.CHANGEFILTER:
     this.setCurrentFilter( payload.filter )
+    this.__emitChange();
+    break;
+    case Constants.TRIGGERPROJECTCREATION:
+    this.setCreateProjectTrue();
+    this.__emitChange();
+    break;
+    case Constants.TRIGGERPROJECTCREATIONREMOVAL:
+    this.setCreateProjectFalse();
     this.__emitChange();
     break;
   }

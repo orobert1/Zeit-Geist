@@ -12,7 +12,6 @@ module.exports = React.createClass({
   },
 
   componentDidMount(){
-    $('#absoluteContainer').children().remove();
     SessionActions.checkCurrentUser();
     UserStore.addListener( this.__change );
     window.addEventListener( "scroll", this.state.window.run.bind( this.state.window ) );

@@ -1,6 +1,7 @@
 const ErrorStore = require('../stores/errors_store');
 module.exports = {
   logIn(user,la){
+
     $.ajax({
       url: 'api/session',
       method: "POST",
@@ -15,6 +16,7 @@ module.exports = {
   },
 
   getAllProjects( filters, callback ){
+
     $.ajax({
       url: 'api/projects',
       method: 'GET',
@@ -26,6 +28,7 @@ module.exports = {
   },
 
   logOut( la, reset ){
+
       $.ajax({url: `api/session`,
       method: "DELETE",
       success(){
@@ -37,6 +40,7 @@ module.exports = {
 },
 
   currentUser(la){
+
     $.ajax({
       url: 'api/session',
       method: 'GET',
@@ -47,6 +51,7 @@ module.exports = {
   },
 
   createUser(user, la){
+
     $.ajax({
       url: 'api/users',
       method: 'POST',
@@ -59,6 +64,7 @@ module.exports = {
     });
   },
   getUser(id, la){
+
     $.ajax({
       url: `api/users/${id}`,
       method: 'GET',
@@ -68,6 +74,7 @@ module.exports = {
     });
   },
   destroyProject(id,fnc){
+
 
     $.ajax({
       url: `api/projects/${id}`,
@@ -79,6 +86,7 @@ module.exports = {
     })
   },
   getUserProfile(id, creation, max, la){
+
     $.ajax({
       url: `api/users/${id}`,
       method: 'GET',
@@ -90,19 +98,20 @@ module.exports = {
     });
   },
 
-  createProject(data, la, fnc){
-    fnc = fnc;
+  createProject( payload, callback ){
     $.ajax({
       url: "api/projects",
       method: 'POST',
-      data: data,
+      data: payload,
       success(data){
-        la(data, fnc);
+        debugger
+        callback( data );
       }
     });
   },
 
   createImage(data, successCallback, errorCallback){
+
     $.ajax({
       url: "api/images",
       method: "POST",
@@ -121,6 +130,7 @@ module.exports = {
 
   createDescription(data, successCallback, errorCallback){
 
+
     $.ajax({
       url: 'api/descriptions',
       method: "POST",
@@ -136,6 +146,7 @@ module.exports = {
   },
   getImages(id, successCallback){
 
+
     $.ajax({
       url:`api/projects/${id}/images`,
       method:'GET',
@@ -145,6 +156,7 @@ module.exports = {
     })
   },
   editProject(data, la){
+
     $.ajax({
       url:`api/projects/${data.id}`,
       method: 'PATCH',
@@ -155,6 +167,7 @@ module.exports = {
     })
   },
   getProjects(date, la){
+
 
     $.ajax({
       url:'api/projects/',
@@ -167,6 +180,7 @@ module.exports = {
   },
 
   getProject(id, callback){
+
     $.ajax({
       url: `api/projects/${id}`,
       method: 'GET',
