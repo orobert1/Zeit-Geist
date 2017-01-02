@@ -112,7 +112,7 @@ proj = Project.create(title: "Stars", user_id: User.find_by(username: "Guest" ).
 
 lastnames = [ "man", "guy", "friend", "feet", "troll", "potato", "ticklemonster", "thoughleader" ]
 adjectives = [ "witty", "red", "honest", "tasty", "silly", "crazy", "lazy", "sleepy" ]
-nouns = [ "Tree", "Velvet", "Table", "Glue", "Woods", "Steel", "Baby", "Alien" ]
+nouns = [ "Tree", "Velvet", "Table", "Glue", "Woods", "Steel", "Baby", "lien" ]
 
 lastnames.map{ |el|
   adjectives.map{ |el1|
@@ -124,3 +124,5 @@ lastnames.map{ |el|
     }
   }
 }
+
+User.find_by({ username: "Guest" }).follow(1)

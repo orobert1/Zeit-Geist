@@ -32,11 +32,8 @@ class User < ActiveRecord::Base
    class_name: "UserConnection"
 
  has_many :followers, through: :following_connections, source: :follower
-
  has_many :followings, through: :follower_connections, source: :following
-
  has_many :followingProjects, through: :followings, source: :projects
-
  has_many :tags, through: :projects, source: :tags
 
 
@@ -62,6 +59,10 @@ class User < ActiveRecord::Base
     self.session_token = SecureRandom.urlsafe_base64(16)
     self.save!
     self.session_token
+  end
+
+  def follow( id )
+    UserConnection.create({ follower_id: self.id, following_id: id })
   end
 
   def ensure_session_token
