@@ -65,7 +65,9 @@ class Api::ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
-    @cover_image = Image.find(params[:el][:el][:id])
+    if params[:el] && params[:el][:el] && params[:el][:el][:id]
+      @cover_image = Image.find( params[:el][:el][:id] )
+    end
     @project.update({ cover_image: @cover_image.image_file.url });
   end
 
