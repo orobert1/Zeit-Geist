@@ -104,8 +104,18 @@ module.exports = {
       method: 'POST',
       data: payload,
       success(data){
-        debugger
         callback( data );
+      }
+    });
+  },
+
+  updateCoverPhoto( project ){
+    $.ajax({
+      url: `api/projects/${project.projectId}/edit`,
+      method: 'GET',
+      data: project,
+      success(data){
+        debugger
       }
     });
   },

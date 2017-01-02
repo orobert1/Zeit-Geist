@@ -5,6 +5,7 @@ const ReactDOM = require('react-dom');
 const Index = require('./components/index');
 const Util = require('./util/apiutil');
 const LogIn = require('./components/login');
+const CurrentUserStore = require('./stores/current_user_store');
 const Header = require('./components/header.jsx');
 const CreateUser = require('./components/create_user');
 const Profile = require('./components/profile');
@@ -14,7 +15,7 @@ const CoverCrop = require('./components/cover_crop');
 const ShowProject = require('./components/show_project');
 const ProjectIndexStore = require('./stores/project_index_store');
 const UserActions = require('./actions/user_actions');
-const ShowUser = require('./components/showUser');
+const showUser = require('./components/showUser');
 
 window.util = Util;
 
@@ -33,7 +34,7 @@ const routes = (
     <IndexRoute component={Index}/>
     <Route path="/index" component = {Index}/>
     <Route path='/login' component={LogIn}/>
-    <Route path='/user/:userId' component = { ShowUser }/>
+    <Route path='/user/:userId' component = { showUser }/>
     <Route path='/createUser' component={CreateUser}/>
     <Route path='/profile/:userId' component={Profile}/>
     <Route path='/create_new_project' component={CreateNewProject}/>

@@ -12,10 +12,11 @@ const Head = require('./head');
 const FilterBar = require('./filterBar');
 const ProjectViewPane = require('./projectViewPane');
 const CreateProject = require('./createProject.jsx');
+const ChooseCover = require('./chooseCover.jsx');
 const $ = require('jquery');
 const Index = React.createClass({
   getInitialState(){
-    return({ user: {}, window: new checkWindow(), project: {}, pane: false, createProject: false })
+    return({ user: {}, window: new checkWindow(), project: {}, pane: false, createProject: false, created: {} })
   },
 
 
@@ -32,6 +33,7 @@ const Index = React.createClass({
   __changeProject(){
     let project = ProjectStore.getProject();
     let createProject = ProjectStore.getProjectCreationStatus();
+    let created = ProjectStore.getProjectCreated();
     if( createProject ){
       this.slideToTheLeft();
       project = {};
@@ -44,7 +46,7 @@ const Index = React.createClass({
         this.setState({ pane: false });
       }
     }
-    this.setState({ project: project, createProject: createProject })
+    this.setState({ project: project, createProject: createProject, created: created })
   },
 
   showHead(){
@@ -92,6 +94,8 @@ const Index = React.createClass({
   viewPane(){
     if( this.state.project.cover ){
       return <ProjectViewPane project = { this.state.project }/>
+    }else if( this.state.created.images ){
+      return <ChooseCover project = { this.state.created } slide = { this.slideToTheLeft } />
     }else if (this.state.createProject) {
       return <CreateProject></CreateProject>
     }

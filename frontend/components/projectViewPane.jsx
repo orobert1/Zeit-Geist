@@ -111,7 +111,9 @@ module.exports = React.createClass({
   },
 
   userPage(){
-    this.context.router.push('/user/' + this.state.project.user.id)
+    let filterPackage = { userId: this.state.project.cover.user_id };
+    ProjectActions.getAllProjects( filterPackage );
+    this.xClick();
   },
 
   render(){

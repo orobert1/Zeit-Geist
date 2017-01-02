@@ -16,7 +16,6 @@ module.exports = React.createClass({
     UserStore.addListener( this.__change );
     window.addEventListener( "scroll", this.state.window.run.bind( this.state.window ) );
     this.showHead();
-
   },
 
   showHead(){
@@ -34,10 +33,13 @@ module.exports = React.createClass({
 
   render(){
     return(
-      <div>
-        <Head user = { this.state.user } win = { this.state.window } />
-
-      </div>
+    <div>
+      <Head user = { this.state.user } win = { this.state.window } />
+      {
+        this.viewPane()
+      }
+      <ProjectIndex user = { this.state.user } win = { this.state.window } pane = { this.state.pane } />
+    </div>
     )
   }
 })

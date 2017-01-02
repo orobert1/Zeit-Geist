@@ -8,6 +8,7 @@ const ProjectStore = new Store(AppDispatcher);
 ProjectStore.allProjects = [];
 ProjectStore.project = {};
 ProjectStore.filter = {};
+ProjectStore.projectCreated = {}
 ProjectStore.createProject = false;
 
 ProjectStore.changeAllProjects = function( projects ){
@@ -54,6 +55,19 @@ ProjectStore.removeProject = function(){
   this.project = {};
 }
 
+ProjectStore.setProjectCreated = function( project ){
+  this.projectCreated = project;
+}
+
+ProjectStore.getProjectCreated = function(){
+  return this.projectCreated;
+}
+
+ProjectStore.clearProjectCreated = function(){
+  this.projectCreated = {};
+}
+
+
 ProjectStore.__onDispatch = function( payload ){
   switch (payload.actionType){
     case Constants.RECEIVE_PROJECTS:
@@ -84,6 +98,15 @@ ProjectStore.__onDispatch = function( payload ){
     this.setCreateProjectFalse();
     this.__emitChange();
     break;
+    case Constants.RECEIVECREATEDPROJECT:
+    this.setProjectCreated( payload.project )
+    this.__emitChange();
+    break;
+    case Constants.CLEARPROJECTCREATED:
+    this.clearProjectCreated();
+    this.__emitChange();
+    break;
+
   }
 }
 

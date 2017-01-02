@@ -24,6 +24,7 @@ absoluteProject.prototype.addProject = function( payload ){
     if( payload.project.id === 1 ){
 
     }
+    payload.timing = this.projectsMounted;
     this.newProjects[ payload.project.id ] = new Project( payload )
   }
   this.projectsMounted ++;

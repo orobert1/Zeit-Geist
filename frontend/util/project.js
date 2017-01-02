@@ -5,6 +5,7 @@ function absProject( payload ){
   this.project = payload.project;
   this.index = payload.index;
   this.click = payload.click;
+  this.timing = payload.timing;
   this.id = "absoluteProject" + this.project.id;
   this.user = payload.user;
   this.addProject();
@@ -26,7 +27,7 @@ absProject.prototype.addProject = function(){
         absoluteContainer.appendChild(project);
         window.setTimeout( function(){
           $(project).css({ opacity: 1 });
-        }, 100 );
+        }, 100 + (this.timing * 50) );
       }.bind(this), 100);
     }else{
       this.removeProject();

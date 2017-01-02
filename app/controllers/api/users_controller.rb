@@ -40,18 +40,8 @@ class Api::UsersController < ApplicationController
     else
       @date = Time.now.utc.to_s(:db)
     end
-
-    @projects = Project.includes(:user)
-    .where("user_id = ? AND created_at > ?",
-    params[:id],params[:date])
-    .order("created_at ASC")
-    .take(params[:payload_size])
-
-    # @projects = @user.projects..
-
-
-      render json: {user: @projects[0].user , projects: @projects}
-
+    @projects = Project.personal(@date, @tags, User.find( params[:id] ))
+    render json: {user: User.find( params[:id] ) , projects: @projects}
 
   end
 

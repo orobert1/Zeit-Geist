@@ -1294,6 +1294,38 @@ input {-webkit-appearance: none; box-shadow: none !important; }
   background-size: 100% 100%;
   position: relative;
 }
+
+.chooseCoverImg{
+  float: left;
+  height: 15vw;
+  width: auto;
+  margin-right: 1vw;
+  margin-top: 1vw;
+  transition: .4s;
+  opacity: .6;
+  border: 1px solid red;
+}
+
+.chooseCoverImg:hover{
+  opacity: 1;
+  cursor: pointer;
+  transition: .4s;
+}
+
+.chooseCoverImagesContainer{
+  float: left;
+  width: 80%;
+  margin-left: 10%;
+}
+.chooseCoverTitle{
+  margin-top: 120px;
+  font-size: 6vw;
+  margin-left: 10%;
+  font-weight: lighter;
+  line-height: 1.6em;
+  width: 60%;
+}
+
 .tagOptionsContainer{
   float: left;
   position: relative;

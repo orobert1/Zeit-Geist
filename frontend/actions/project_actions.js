@@ -13,7 +13,17 @@ module.exports = {
   },
 
   createProject( payload ){
-    ApuUtil.createProject( payload, this.receiveCreatedProject );
+    ApiUtil.createProject( payload, this.receiveCreatedProject );
+  },
+
+  updateCoverPhoto( project ){
+    ApiUtil.updateCoverPhoto( project );
+  },
+
+  clearProjectCreated(){
+    Dispatcher.dispatch({
+      actionType: Constants.CLEARPROJECTCREATED
+    })
   },
 
   triggerProjectCreationPane(){

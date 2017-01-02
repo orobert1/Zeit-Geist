@@ -1,6 +1,8 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const ProjectActions = require('../actions/project_actions');
+const UserStore = require('../stores/user_store');
+const ProjectStore = require('../stores/project_store');
 
 module.exports = React.createClass({
   getInitialState(){
@@ -8,6 +10,7 @@ module.exports = React.createClass({
   },
 
   componentDidMount(){
+
     window.setTimeout(function(){
         $('#projectViewPane').css({ width: "60%" })
     }, 200);
@@ -82,8 +85,9 @@ module.exports = React.createClass({
   createProject(){
     let title = this.state.title;
     let images = this.state.images;
-    let payload = { title: title, images: images }
-    projectActions.createProject( payload );
+    let user = UserStore.currentUser();
+    let payload = { title: title, images: images, user: user }
+    ProjectActions.createProject( payload );
   },
 
   render(){
