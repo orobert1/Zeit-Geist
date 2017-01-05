@@ -107,7 +107,7 @@ const Index = React.createClass({
   },
 
   slideToTheLeft(){
-    $('#projectIndex').css({ width: "52%" });
+    $('#projectIndex').css({ width: "45%" });
   },
 
   slideToTheRight(){

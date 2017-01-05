@@ -790,7 +790,7 @@ strong{
   min-height: 1200px;
   max-height: 20000000px;
   width: 50%;
-  margin-left: 5%;
+  margin-left: 30px;
 
 }
 
@@ -944,7 +944,7 @@ strong{
   margin-bottom: 20px;
   margin-left: 50px;
   opacity: 0;
-  height: 240px;
+  height: 160px;
 }
 
 .indexCover{
@@ -991,18 +991,24 @@ strong{
 #menuItems{
   position: fixed;
   top: 20%;
-  left: 55%;
+  right: 100px;
 }
 
 .menuChild{
   font-size: 6vw;
+  text-align: right;
   font-weight: bolder;
   -webkit-text-stroke: 2px rgb( 0,0,0 );
+  line-height: 1.4em;
   color: transparent;
   display: none;
+  transition: .1s;
 }
 .menuChild:hover{
   cursor: pointer;
+  color: rgb(50,50,50) ;
+  transition: .1s;
+
 }
 
 .absoluteImg{

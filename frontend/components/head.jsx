@@ -71,6 +71,7 @@ module.exports = React.createClass({
   menu(){
     if( this.state.menu ){
       this.props.hide();
+      $(".absoluteImg").css({ opacity: 1 })
     }else{
       this.props.show();
     }
