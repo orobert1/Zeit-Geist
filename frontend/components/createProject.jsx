@@ -105,7 +105,7 @@ module.exports = React.createClass({
   },
 
   removeTitle(){
-    this.setState({ title: "" });
+    this.setState({ title: " " });
   },
 
   render(){
