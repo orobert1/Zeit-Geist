@@ -23,15 +23,9 @@ module.exports = React.createClass({
     render(){
       return (
         <div className = "filterBar">
-          <div className = "spacer">
-            <Filter name = "Public" left = { 2 } />
-            <Filter name = "Following" left = { 5 } />
-            <Filter name = "Personal" left = { 8 } />
-            <div className = "settings" onClick = { this.toggleTags }/>
-            <div className = "tagOptionsContainer">
-              <Tags/>
-            </div>
-          </div>
+            <Filter name = "Public"/>
+            <Filter name = "Following"/>
+            <Filter name = "Personal"/>
         </div>
       );
     }

@@ -27,6 +27,12 @@ module.exports = React.createClass({
     this.props.absolute.addProject( payload );
   },
 
+  reloadItem(){
+    this.props.absolute.reloadImage( this.props.element.project.id );
+  },
+
+
+
   click(){
     ProjectActions.getProject( this.props.element.project.id );
   },
@@ -34,7 +40,7 @@ module.exports = React.createClass({
   render(){
     return(
       <div className = { "targetItem" } id = { "targetItem" + this.props.element.project.id } >
-        <img src = {this.props.element.project.cover_image} className = "indexCover" onLoad = { this.aspectBuffer } id = { "targImg" + this.props.element.project.id } />
+        <img src = {this.props.element.project.cover_image} onLoad = { this.reloadItem } className = "indexCover" id = { "targImg" + this.props.element.project.id } />
       </div>
     )
   }

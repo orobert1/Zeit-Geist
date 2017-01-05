@@ -4,6 +4,7 @@ function absProject( payload ){
   this.target = payload.target;
   this.project = payload.project;
   this.index = payload.index;
+  this.user = payload.user
   this.click = payload.click;
   this.timing = payload.timing;
   this.id = "absoluteProject" + this.project.id;
@@ -16,14 +17,32 @@ absProject.prototype.addProject = function(){
     let target = $( document.getElementById(this.target) );
     if (target.position()) {
       window.setTimeout( function(){
-        let project = document.createElement("img");
+        let project = document.createElement("div");
+        let img = document.createElement( "img" );
+        let container = document.createElement( "div" );
         let absoluteContainer = document.getElementById("absoluteContainer");
         let target = $( document.getElementById(this.target) );
+        let title = document.createElement( "div" );
+        let author = document.createElement( "div" )
+        container.className = "absoluteProjectContainer";
+        img.className = "absoluteImg"
+        project.appendChild( container );
+        project.appendChild( img );
+        title.innerHTML = this.project.title;
+        author.innerHTML = "by " + this.user.username;
+        title.appendChild( author );
+        project.appendChild( title );
+        title.className = "absoluteTitle";
+        author.className = "absoluteAuthor"
         project.id = this.id;
         project.onclick = this.click;
-        project.src = this.project.cover_image;
-        project.className = "absoluteImg";
-        $(project).css({ top: target.position().top, left: target.position().left, width: "auto", height: target.height(), marginTop: target.css( 'margin-top' ), marginLeft: target.css( 'margin-left' ),  paddingRight: target.css( 'padding-right' ), padding: target.css( 'padding' ) });
+        img.src = this.project.cover_image;
+        project.className = "absoluteCont";
+        if( target.css('width') === "0px" || target.css('width') === "" ){
+          $(project).css({ top: target.position().top, left: target.position().left, width: target.height(), height: target.height(), marginTop: target.css( 'margin-top' ), marginLeft: target.css( 'margin-left' ),  paddingRight: target.css( 'padding-right' ), padding: target.css( 'padding' ) });
+        }else{
+          $(project).css({ top: target.position().top, left: target.position().left, width: target.css('width'), height: target.height(), marginTop: target.css( 'margin-top' ), marginLeft: target.css( 'margin-left' ),  paddingRight: target.css( 'padding-right' ), padding: target.css( 'padding' ) });
+        }
         absoluteContainer.appendChild(project);
         window.setTimeout( function(){
           $(project).css({ opacity: 1 });
@@ -56,6 +75,14 @@ absProject.prototype.remove = function(){
   let project = document.getElementById( this.id );
   if( project ){
     $(project).remove();
+  }
+}
+
+absProject.prototype.reloadImage = function(){
+  let project = document.getElementById( this.id );
+  let target = $( document.getElementById(this.target) );
+  if( target.position() ){
+    $(project).css({ width: target.css('width') });
   }
 }
 

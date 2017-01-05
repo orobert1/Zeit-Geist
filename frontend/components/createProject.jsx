@@ -10,45 +10,59 @@ module.exports = React.createClass({
   },
 
   componentDidMount(){
+    window.setTimeout( function(){
 
-    window.setTimeout(function(){
-        $('#projectViewPane').css({ width: "60%" })
-    }, 200);
-    $( "#projectViewPane" ).hover(
-      function(){
-        $(".absoluteImg").css({ transition: ".6s", opacity: .08 })
-      },
-      function(){
-        $(".absoluteImg").css({ opacity: 1 })
-      }
+      window.setTimeout( function(){
+        $( "#projectViewPane" ).hover(
+          function(){
+            $(".absoluteCont").css({ transition: ".6s", opacity: .08 })
+          },
+          function(){
+            $(".absoluteCont").css({ opacity: 1 })
+          }
 
-    );
+        );
 
-    $( ".scrollPane" ).hover(
-      function(){
-        $(".absoluteImg").css({ transition: ".6s", opacity: .08 })
-      },
-      function(){
-        $(".absoluteImg").css({ opacity: 1 })
-      }
+        $( ".scrollPane" ).hover(
+          function(){
+            $(".absoluteCont").css({ transition: ".6s", opacity: .08 })
+          },
+          function(){
+            $(".absoluteCont").css({ opacity: 1 })
+          }
 
-    );
+        );
 
-    $( ".absoluteImg" ).hover(
-      function(){
-        $("#projectViewPane").css({ transition: ".6s", opacity: .2 })
-      },
-      function(){
-        $("#projectViewPane").css({ opacity: 1 })
-      }
+        $( ".absoluteCont" ).hover(
+          function(){
+            $("#projectViewPane").css({ transition: ".6s", opacity: .2 })
+          },
+          function(){
+            $("#projectViewPane").css({ opacity: 1 })
+          }
 
-    );
+        );
+      }, 1000);
+
+      $(".absoluteCont").css({ transition: ".6s", opacity: .08 })
+      this.setState({ project: this.props.project });
+
+      $('.scrollPane').children().each(function(fadeInDiv) {
+       $(this).delay( (fadeInDiv + 1) * 100).fadeIn(400);
+      });
+    }.bind( this ), 700);
   },
 
   xClick(){
-    $(".absoluteImg").css({ opacity: 1 })
-    ProjectActions.triggerProjectCreationPaneRemoval();
-
+    $(".absoluteCont").css({ opacity: 1 })
+    $('.scrollPane').children().each(function(fadeInDiv) {
+     $(this).delay(500 / ( fadeInDiv + 1 ) ).fadeOut(400);
+    });
+    $('#projectViewPane').delay(400).fadeOut(200);
+    window.setTimeout(
+      ProjectActions.triggerProjectCreationPaneRemoval,
+      600
+    );
   },
 
   titleChange(e){
@@ -90,6 +104,10 @@ module.exports = React.createClass({
     ProjectActions.createProject( payload );
   },
 
+  removeTitle(){
+    this.setState({ title: "" });
+  },
+
   render(){
     return(
       <div id = "projectViewPane">
@@ -97,7 +115,7 @@ module.exports = React.createClass({
           <div className = "x" onClick = { this.xClick } >X</div>
         </div>
         <div className = "scrollPane">
-          <input className = "titleInput" placeholder = "Title" type = "text" onChange = {this.titleChange}/>
+          <input className = "titleInput" placeholder = "Title" type = "text" onChange = {this.titleChange} onClick = { this.removeTitle } />
           {
             this.images()
           }

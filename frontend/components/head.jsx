@@ -3,7 +3,7 @@ const ReactDOM = require('react-dom');
 const Grid = require('../util/grid')
 const $ = require('jquery');
 const SessionActions = require('../actions/sessionActions');
-const projectActions = require('../actions/project_actions');
+const ProjectActions = require('../actions/project_actions');
 const FilterBar = require('./filterBar');
 const Tags = require('./tags');
 
@@ -14,20 +14,16 @@ module.exports = React.createClass({
     router: React.PropTypes.object.isRequired
   },
 
-  componentDidMount(){
-
-    let badge = document.getElementById( "currentUserBadge" );
-    let grid = new Grid();
-    grid.marginRight( badge, 2 );
-
-  },
-
   user(){
 
     if( this.props.user.username ){
       return( this.props.user.username );
     }
 
+  },
+
+  componentWillReceiveProps( newProps ){
+    this.setState({ menu: newProps.menu, project: newProps.project });
   },
 
   logout(){
@@ -50,6 +46,9 @@ module.exports = React.createClass({
         this.fadeIn( children );
       }.bind(this) ,100 )
     }
+    if( this.state.project.cover ){
+      ProjectActions.removeProject();
+    }
 
   },
 
@@ -65,32 +64,30 @@ module.exports = React.createClass({
     this.context.router.push('/index')
   },
 
-  filter(){
-    if( this.props.user ){
-      return(
-        <FilterBar />
-      );
+  getFilter(){
+
+  },
+
+  menu(){
+    if( this.state.menu ){
+      this.props.hide();
+    }else{
+      this.props.show();
     }
   },
 
   addProject(){
-    console.log("clik");
-    projectActions.triggerProjectCreationPane();
+    ProjectActions.triggerProjectCreationPane();
   },
 
   render(){
     return(
       <div id = "head">
-        <div id = "homeButton" onClick = { this.navHome }> Home </div>
-        <div id = "addProjectButton" onClick = { this.addProject } > Add Project </div>
-        <div id = "currentUserBadge">
-          {
-            this.user()
-          }
-          <div className = "badgeMenu">
-            <div id = "linkToProfile" onClick = { this.profile }>  Profile </div>
-            <div id = "logOutButton" onClick = { this.logout }> Log Out </div>
-          </div>
+        <FilterBar/>
+        <div id = "hamburger" onClick = { this.menu } >
+          <div className = "bun"/>
+          <div className = "bun"/>
+          <div className = "bun"/>
         </div>
       </div>
     )

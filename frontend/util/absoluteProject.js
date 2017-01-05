@@ -67,4 +67,8 @@ absoluteProject.prototype.checkOverlap = function( newProject ){
   }
 }
 
+absoluteProject.prototype.reloadImage = function( id ){
+  this.oldProjects[id].reloadImage();
+}
+
 module.exports = absoluteProject;

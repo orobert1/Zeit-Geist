@@ -4,17 +4,11 @@ const Grid = require('../util/grid');
 const ProjectActions = require('../actions/project_actions');
 
 module.exports = React.createClass({
-  componentDidMount(){
-    $( '.filter' ).css({ transitions: "1s" });
-    let filter = document.getElementById( this.props.name );
-    let grid = new Grid();
-
-  },
 
   changeDecoration(){
-    $( '.filter' ).css({ color: "white" });
+    $( '.filter' ).css({ color: "transparent" });
     let filter = document.getElementById( this.props.name );
-    filter.style.color = "rgb( 0, 0, 0 )";
+    filter.style.color = "rgb( 255, 0, 0 )";
   },
 
   click(){

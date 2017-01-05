@@ -9,6 +9,7 @@ const ProjectIndex = require('./projectIndex');
 const ProjectStore = require('../stores/project_store');
 const checkWindow = require('../util/checkWindow');
 const Head = require('./head');
+const ProjectActions = require('../actions/project_actions');
 const FilterBar = require('./filterBar');
 const ProjectViewPane = require('./projectViewPane');
 const CreateProject = require('./createProject.jsx');
@@ -16,7 +17,7 @@ const ChooseCover = require('./chooseCover.jsx');
 const $ = require('jquery');
 const Index = React.createClass({
   getInitialState(){
-    return({ user: {}, window: new checkWindow(), project: {}, pane: false, createProject: false, created: {} })
+    return({ user: {}, window: new checkWindow(), project: {}, pane: false, createProject: false, created: {}, menu: false })
   },
 
 
@@ -34,6 +35,9 @@ const Index = React.createClass({
     let project = ProjectStore.getProject();
     let createProject = ProjectStore.getProjectCreationStatus();
     let created = ProjectStore.getProjectCreated();
+    if( this.state.menu ){
+      this.hideMenu();
+    }
     if( createProject ){
       this.slideToTheLeft();
       project = {};
@@ -46,6 +50,7 @@ const Index = React.createClass({
         this.setState({ pane: false });
       }
     }
+    $(".absoluteCont").css({ opacity: 1 })
     this.setState({ project: project, createProject: createProject, created: created })
   },
 
@@ -102,11 +107,40 @@ const Index = React.createClass({
   },
 
   slideToTheLeft(){
-    $('#projectIndex').css({ width: "55%" });
+    $('#projectIndex').css({ width: "52%" });
   },
 
   slideToTheRight(){
-    $('#projectIndex').css({ width: "100%" });
+    $('#projectIndex').css({ width: "90%" });
+  },
+
+  showMenu(){
+    this.setState({ project: {}, createProject: false, created: {} });
+    this.slideToTheLeft();
+    this.setState({ menu: true });
+    this.fadeInMenu();
+  },
+
+  hideMenu(){
+    this.slideToTheRight();
+    this.setState({ menu: false });
+    this.fadeOutMenu();
+  },
+
+  fadeInMenu(){
+    $('#menuItems').children().each(function(fadeInDiv) {
+     $(this).delay( (fadeInDiv + 1) * 100).fadeIn(400);
+    });
+  },
+
+  fadeOutMenu(){
+    $('#menuItems').children().each(function(fadeInDiv) {
+     $(this).delay(500 / ( fadeInDiv + 1 ) ).fadeOut(400);
+    });
+  },
+
+  addProject(){
+    ProjectActions.triggerProjectCreationPane();
   },
 
   render(){
@@ -118,12 +152,16 @@ const Index = React.createClass({
           this.cover()
         }
 
-        <Head user = { this.state.user } win = { this.state.window } />
+        <Head user = { this.state.user } win = { this.state.window } show = { this.showMenu } hide = { this.hideMenu } menu = { this.state.menu } project = { this.state.project } callback = { this.changePane } />
         {
           this.viewPane()
         }
         <ProjectIndex user = { this.state.user } win = { this.state.window } pane = { this.state.pane } />
-
+        <div id = "menuItems">
+          <div className = "menuChild" onClick = { this.addProject } > Create Project </div>
+          <div className = "menuChild"> Discover </div>
+          <div className = "menuChild"> Logout </div>
+        </div>
       </div>
     );
   }

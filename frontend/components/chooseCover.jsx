@@ -60,7 +60,7 @@ module.exports = React.createClass({
   },
 
   click( e ){
-    debugger
+
   },
 
   xClick(){

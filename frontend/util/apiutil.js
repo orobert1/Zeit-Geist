@@ -115,7 +115,6 @@ module.exports = {
       method: 'GET',
       data: project,
       success(data){
-        debugger
       }
     });
   },

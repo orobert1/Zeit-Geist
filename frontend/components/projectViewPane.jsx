@@ -15,56 +15,67 @@ module.exports = React.createClass({
   componentDidMount(){
     let title = document.getElementById("viewPaneProjectTitle");
     let grid = new Grid();
-    $( ".projectImage" ).hover(
-      function(){
-        $(".absoluteImg").css({ transition: ".6s", opacity: .08 })
-      },
-      function(){
-      }
+    window.setTimeout( function(){
+      $( ".projectImage" ).hover(
+        function(){
+          $(".absoluteCont").css({ transition: ".6s", opacity: .08 })
+        },
+        function(){
+        }
 
-    );
+      );
 
-    $( "#projectViewPane" ).hover(
-      function(){
-        $(".absoluteImg").css({ transition: ".6s", opacity: .08 })
-      },
-      function(){
-        $(".absoluteImg").css({ opacity: 1 })
-      }
+      $( "#projectViewPane" ).hover(
+        function(){
+          $(".absoluteCont").css({ transition: ".6s", opacity: .08 })
+        },
+        function(){
+          $(".absoluteCont").css({ opacity: 1 })
+        }
 
-    );
+      );
 
-    $( ".scrollPane" ).hover(
-      function(){
-        $(".absoluteImg").css({ transition: ".6s", opacity: .08 })
-      },
-      function(){
-        $(".absoluteImg").css({ opacity: 1 })
-      }
+      $( ".scrollPane" ).hover(
+        function(){
+          $(".absoluteCont").css({ transition: ".6s", opacity: .08 })
+        },
+        function(){
+          $(".absoluteCont").css({ opacity: 1 })
+        }
 
-    );
+      );
 
-    $( ".absoluteImg" ).hover(
-      function(){
-        $("#projectViewPane").css({ transition: ".6s", opacity: .2 })
-      },
-      function(){
-        $("#projectViewPane").css({ opacity: 1 })
-      }
+      $( ".absoluteCont" ).hover(
+        function(){
+          $("#projectViewPane").css({ transition: ".6s", opacity: .2 })
+        },
+        function(){
+          $("#projectViewPane").css({ opacity: 1 })
+        }
 
-    );
+      );
+    }, 1000 );
+
+    $(".absoluteCont").css({ transition: ".6s", opacity: .08 })
     this.setState({ project: this.props.project });
 
+    $('.scrollPane').children().each(function(fadeInDiv) {
+     $(this).delay( (fadeInDiv + 1) * 100).fadeIn(400);
+    });
 
-    window.setTimeout(function(){
-        $('#projectViewPane').css({ width: "60%" })
-    }, 200);
+
   },
 
   xClick(){
-    $(".absoluteImg").css({ opacity: 1 })
-    ProjectActions.removeProject();
-
+    $(".absoluteCont").css({ opacity: 1 })
+    $('.scrollPane').children().each(function(fadeInDiv) {
+     $(this).delay(500 / ( fadeInDiv + 1 ) ).fadeOut(400);
+    });
+    $('#projectViewPane').delay(400).fadeOut(200);
+    window.setTimeout(
+      ProjectActions.removeProject,
+      600
+    );
   },
 
   componentWillReceiveProps( props ){

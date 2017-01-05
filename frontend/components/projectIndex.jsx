@@ -14,7 +14,6 @@ module.exports = React.createClass({
   componentDidMount(){
     let grid = new Grid();
     grid.alignTop( projectIndex, 0 );
-    grid.picHeight( projectIndex, 20 );
     let projList = ProjectStore.addListener( this.__projChange );
     this.setState( { user: this.props.user } );
     ProjectActions.getAllProjects( {} );
@@ -78,7 +77,6 @@ module.exports = React.createClass({
   render(){
     return(
       <div id = "projectIndex">
-        <FilterBar/>
         <div className = "woof"/>
         {
           this.projects()
