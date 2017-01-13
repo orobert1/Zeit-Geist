@@ -16,6 +16,9 @@ const CreateProject = require('./createProject.jsx');
 const ChooseCover = require('./chooseCover.jsx');
 const $ = require('jquery');
 const Index = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
   getInitialState(){
     return({ user: {}, window: new checkWindow(), project: {}, pane: false, createProject: false, created: {}, menu: false })
   },
@@ -29,6 +32,13 @@ const Index = React.createClass({
     SessionActions.checkCurrentUser();
     this.list = UserStore.addListener( this.__change );
     this.projectList = ProjectStore.addListener( this.__changeProject );
+  },
+
+  componentWillUnmount(){
+    ProjectStore.setCreateProjectFalse();
+    ProjectActions.removeProject();
+    this.list.remove();
+    this.projectList.remove();
   },
 
   __changeProject(){
@@ -143,6 +153,18 @@ const Index = React.createClass({
     ProjectActions.triggerProjectCreationPane();
   },
 
+  logout(){
+
+    SessionActions.logOutUser( );
+    this.hideMenu();
+    this.context.router.push('/index')
+    window.setTimeout(function(){
+      window.scrollTo( 0, 0)
+      location.reload(true)
+    }, 100);
+
+  },
+
   render(){
 
     return(
@@ -156,11 +178,10 @@ const Index = React.createClass({
         {
           this.viewPane()
         }
-        <ProjectIndex user = { this.state.user } win = { this.state.window } pane = { this.state.pane } />
+        <ProjectIndex user = { this.state.user } win = { this.state.window } pane = { this.state.pane } projects = { this.state.projects } />
         <div id = "menuItems">
           <div className = "menuChild" onClick = { this.addProject } > Create Project </div>
-          <div className = "menuChild"> Discover </div>
-          <div className = "menuChild"> Logout </div>
+          <div className = "menuChild" onClick = { this.logout }> Logout </div>
         </div>
       </div>
     );

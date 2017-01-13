@@ -14,7 +14,7 @@ module.exports = React.createClass({
   componentDidMount(){
     let grid = new Grid();
     grid.alignTop( projectIndex, 0 );
-    let projList = ProjectStore.addListener( this.__projChange );
+    this.list = ProjectStore.addListener( this.__projChange );
     this.setState( { user: this.props.user } );
     ProjectActions.getAllProjects( {} );
     $(window).resize(this.state.absoluteProjects.shuffleAll.bind( this.state.absoluteProjects ));
@@ -22,6 +22,10 @@ module.exports = React.createClass({
 
   componentWillReceiveProps( props ){
     this.setState({ user: props.user })
+  },
+
+  componentWillUnmount(){
+    this.list.remove();
   },
 
   __projChange(){
@@ -36,8 +40,6 @@ module.exports = React.createClass({
   getInitialState(){
     return({ user: {}, projects: {}, break: false, offset: 0, absoluteProjects: new absoluteProjects() });
   },
-
-
 
   fadeIn( children ){
     let child = children.splice( 0,1 )
@@ -63,11 +65,11 @@ module.exports = React.createClass({
         return this.state.projects.map(function( el, index ){
           return (
             <IndexItem element = {el}
-              index = { this.state.offset + index}
+              index = { index}
               fade = { this.state.break }
               absolute = { this.state.absoluteProjects }
               pane = { this.props.pane }
-              key = { this.state.offset + index } />
+              key = { index } />
           )
         }.bind(this))
       }

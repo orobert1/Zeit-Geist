@@ -6,6 +6,7 @@ function absProject( payload ){
   this.index = payload.index;
   this.user = payload.user
   this.click = payload.click;
+  this.authorClick = payload.authorClick;
   this.timing = payload.timing;
   this.id = "absoluteProject" + this.project.id;
   this.user = payload.user;
@@ -13,6 +14,9 @@ function absProject( payload ){
 }
 
 absProject.prototype.addProject = function(){
+  if( document.getElementById( this.id ) ){
+    this.removeProject();
+  }
   if( this.project.cover_image ){
     let target = $( document.getElementById(this.target) );
     if (target.position()) {
@@ -34,8 +38,12 @@ absProject.prototype.addProject = function(){
         project.appendChild( title );
         title.className = "absoluteTitle";
         author.className = "absoluteAuthor"
+        author.onclick = this.authorClick;
         project.id = this.id;
         project.onclick = this.click;
+        if( !this.click ){
+          debugger
+        }
         img.src = this.project.cover_image;
         project.className = "absoluteCont";
         if( target.css('width') === "0px" || target.css('width') === "" ){
@@ -66,15 +74,9 @@ absProject.prototype.shuffle = function(){
 }
 
 absProject.prototype.removeProject = function(){
-    let project = document.getElementById( this.id );
-    $(project).css({opacity: 0});
-    window.setTimeout( this.remove.bind( this ), 200 );
-}
-
-absProject.prototype.remove = function(){
   let project = document.getElementById( this.id );
   if( project ){
-    $(project).remove();
+    document.getElementById("absoluteContainer").removeChild(project)
   }
 }
 

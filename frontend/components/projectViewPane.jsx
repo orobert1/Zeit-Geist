@@ -18,7 +18,7 @@ module.exports = React.createClass({
     window.setTimeout( function(){
       $( ".projectImage" ).hover(
         function(){
-          $(".absoluteCont").css({ transition: ".6s", opacity: .08 })
+          $(".absoluteCont").css({ transition: ".6s", opacity: .04 })
         },
         function(){
         }
@@ -27,7 +27,7 @@ module.exports = React.createClass({
 
       $( "#projectViewPane" ).hover(
         function(){
-          $(".absoluteCont").css({ transition: ".6s", opacity: .08 })
+          $(".absoluteCont").css({ transition: ".6s", opacity: .04 })
         },
         function(){
           $(".absoluteCont").css({ opacity: 1 })
@@ -37,7 +37,7 @@ module.exports = React.createClass({
 
       $( ".scrollPane" ).hover(
         function(){
-          $(".absoluteCont").css({ transition: ".6s", opacity: .08 })
+          $(".absoluteCont").css({ transition: ".6s", opacity: .04 })
         },
         function(){
           $(".absoluteCont").css({ opacity: 1 })
@@ -45,18 +45,9 @@ module.exports = React.createClass({
 
       );
 
-      $( ".absoluteCont" ).hover(
-        function(){
-          $("#projectViewPane").css({ transition: ".6s", opacity: .2 })
-        },
-        function(){
-          $("#projectViewPane").css({ opacity: 1 })
-        }
-
-      );
     }, 1000 );
 
-    $(".absoluteCont").css({ transition: ".6s", opacity: .08 })
+    $(".absoluteCont").css({ transition: ".6s", opacity: .04 })
     this.setState({ project: this.props.project });
 
     $('.scrollPane').children().each(function(fadeInDiv) {

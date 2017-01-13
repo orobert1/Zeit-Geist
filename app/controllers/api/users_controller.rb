@@ -34,15 +34,12 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-
-    if params[:date]
-      @date = params[:date]
+    @user = User.find( params[:id] )
+    if @user
+      render json: @user
     else
-      @date = Time.now.utc.to_s(:db)
+      render json: @user.errors
     end
-    @projects = Project.personal(@date, @tags, User.find( params[:id] ))
-    render json: {user: User.find( params[:id] ) , projects: @projects}
-
   end
 
 

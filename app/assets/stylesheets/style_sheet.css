@@ -682,6 +682,11 @@ opacity:1;
   color: rgb(200,200,200);
 
 }
+.PinkFuzzy{
+  width: 100%;
+  height: 100%;
+}
+
 .crop-cover-submit{
   float:left;
   clear:both;
@@ -755,17 +760,19 @@ strong{
 }
 
 #coverTitle{
+  margin: auto;
+  width: 60vw;
   position: absolute;
-  width: 600px;
-  margin-left: 0%;
-  top: 0%;
-  height: 600px;
-  font-size: 36pt;
-  opacity: .8;
-  text-shadow: 2px 3px 5px rgba(0,0,0,.8);
-  color:rgb(236,9,141);
+  left: 20vw;
+  top: 20vh;
+  font-size: 15vw;
+  -webkit-text-stroke: 2px rgb( 200,0,0 );
+  background-image: url("zeitGeistLogo.png");
+  color: transparent;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  height: 30vh;
   font-family: "Graphik-Black";
-  -webkit-transform: rotate(90deg);
 }
 
 #coverScroll{
@@ -796,28 +803,56 @@ strong{
 
 #signInButton{
   position: absolute;
-  width: 100px;
-  margin-left: 00px;
-  font-size: 16pt;
-  text-align: center;
-  background-color: rgb(236, 9, 141);
-  padding: 10px;
-  border: 10px solid rgb(152, 197, 234);
-  color: rgb(152, 197, 234);
-  font-family: "Graphik-Black";
+  top: 60vh;
+  left: 43vw;
+  width: 6vw;
+  height: 10vh;
+  background-image: url("LogIn.png");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
 }
 
 #signUpButton{
   position: absolute;
-  width: 100px;
-  margin-left: 00px;
-  font-size: 16pt;
+  top: 60vh;
+  left: 51vw;
+  width: 6vw;
+  height: 10vh;
+  background-image: url("SignUp.png");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+
+.titleRule{
+  position: absolute;
+  top: 45vh;
+  left: 0vw;
+  width: 100vw;
+  height: 10vh;
+  background-color: white;
+  box-shadow: 0px 4px 10px 3px rgba(0,0,0,.4);
+}
+
+#signInGuest{
+  position: absolute;
+  top: 65vh;
+  left: 45vw;
+  color: black;
+  font-weight: lighter;
+  width: 10vw;
+  letter-spacing: 1px;
+  font-size: 12pt;
+  height: 10vh;
+  line-height: 1.5em;
+  color: red;
   text-align: center;
-  background-color: rgb(236, 9, 141);
-  padding: 10px;
-  border: 10px solid rgb(152,197,234);
-  color:rgb(152,197,234);
-  font-family: "Graphik-Black";
+}
+
+#here{
+  font-weight: bold;
+}
+#here:hover{
+  cursor: pointer;
 }
 
 #signUpButton:hover{
@@ -942,11 +977,55 @@ strong{
   background-color: red;
   float: left;
   margin-bottom: 20px;
-  margin-left: 50px;
+  margin-left: 40px;
   opacity: 0;
   height: 160px;
 }
 
+.homeButton{
+  position: fixed;
+  top: 5vw;
+  left: 10vw;
+  font-weight: bolder;
+  color: red;
+  font-size: 6vw;
+}
+.homeButton:hover{
+  cursor: pointer;
+}
+.profilePicture{
+  float: left;
+  margin-left: 35vw;
+  border-radius: 100%;
+  height: 30vw;
+  margin-top: 10vw;
+  width: 30vw;
+  background-color: white;
+  box-shadow: 5px 5px 20px 1px rgba( 0,0,0, .2 );
+  position: relative;
+  z-index: 1000;
+}
+.profileUserName{
+  position: absolute;
+  left: -25vw;
+  bottom: 0vw;
+  width: 50vw;
+  height: 100px;
+  font-size: 8vw;
+  -webkit-text-stroke: 2px rgb( 255,0,0 );
+  color: transparent;
+  font-weight: bolder;
+}
+.userProjectCanvas{
+  float: left;
+  width: 100%;
+  margin-top: -50px;
+  height: 100px;
+}
+.userProjectContainer{
+  margin: auto;
+  width: 50vw;
+}
 .indexCover{
   width: auto;
   height: 100%;
@@ -973,8 +1052,9 @@ strong{
 
 .absoluteTitle{
   position: absolute;
-  bottom: 20px;
-  left: -50px;
+  bottom: 70px;
+  width: 160px;
+  left: -100px;
   -webkit-transform: rotate(-90deg);
   font-size: 8pt;
   color: rgb(250,0,0);
@@ -1004,6 +1084,7 @@ strong{
   display: none;
   transition: .1s;
 }
+
 .menuChild:hover{
   cursor: pointer;
   color: rgb(50,50,50) ;
@@ -1091,8 +1172,7 @@ strong{
 
 .bottomTitleContainer{
   position: absolute;
-  bottom: -3vw;
-  line-height: 0px;
+  bottom: -7vw;
   text-align: right;
   color: red;
   font-family: "Graphik-Bold";
@@ -1402,4 +1482,206 @@ input {-webkit-appearance: none; box-shadow: none !important; }
 .tagOptionsContainer{
   float: left;
   position: relative;
+}
+
+#squareOne{
+  position: absolute;
+  top: 22vh;
+  left: 34vw;
+  width: 28vw;
+  -webkit-transform: rotate(-4deg) scale( .8, .8);
+  height: 28vw;
+  border: .6vw solid black;
+}
+
+#squareTwo{
+  position: absolute;
+  top: .6vw;
+  left: .6vw;
+  width: 25.5vw;
+  height: 25.5vw;
+  border: .6vw solid black;
+}
+
+#nose{
+  position: absolute;
+  background-image: url( nose.png );
+  width: 6vw;
+  top:-.6vw;
+  height: 12vw;
+  background-size: 100% auto;
+  left: -6vw;
+  margin-top: 20vw;
+  opacity: 0;
+  background-repeat: no-repeat;
+}
+
+.cornerCircle{
+  position: absolute;
+  width: 10vw;
+  height: 10vw;
+}
+.corner{
+  position: absolute;
+  width: 10vw;
+  height: 10vw;
+  left: 25vw;
+  top: -4vw;
+}
+
+.biggerCircle{
+  position: absolute;
+  width: 14.5vw;
+  height: 14.5vw;
+  left: -1vw;
+  top: -2vw;
+  background-color: transparent;
+  border: .1vw solid black;
+}
+.pivot{
+  float: left;
+  width: 0px;
+  height: 0px;
+  position: relative;
+}
+.mayaFrame{
+  position: absolute;
+  top: 10vw;
+  height: 40vw;
+  width: 60vw;
+  background-image: url( "mayaFrame.png" );
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+.mayaFrame2{
+  position: absolute;
+  height: 10vw;
+  width: 22vw;
+  background-image: url( "mayaFrame.png" );
+  background-size: 100% auto;
+  transform: translate( -10vw, 6vw) rotate(90deg) ;
+  background-repeat: no-repeat;
+}
+.latRectPiv{
+  transform: translate(6.5vw, 8.5vw) rotate(45deg) ;
+}
+
+.lateralRect{
+  position: absolute;
+  top: 0vw;
+  left: 0vw;
+  width: 4.5vw;
+  height: 22vw;
+
+
+}
+
+.redCluster{
+  position: absolute;
+  top:0vw;
+  left:0vw;
+  width: .3vw;
+  height: 15vw;
+}
+
+.cluster1{
+  left: .6vw;
+  top: 3vw;
+  height: 13vw;
+}
+.cluster2{
+  left: 1.2vw;
+  height: 18vw;
+}
+
+.cluster3{
+  left: -.6vw;
+  top: -6vw;
+  height: 20vw;
+}
+.cluster4{
+  left: .6vw;
+  top: -6vw;
+  height: 30vw;
+}
+
+.dadaPivot{
+  transform: translate(-10vw, 28vw) rotate(-90deg) ;
+}
+
+.dadaHand{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-image: url(hand.png);
+  width: 5vw;
+  height: 10vw;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  opacity: 0;
+}
+
+.redClusterPivot2{
+  transform: translate(0vw, 15vw) rotate(-90deg);
+}
+
+.redClusterPivot{
+  transform: translate(4.5vw, 22.3vw) rotate(90deg);
+}
+
+.blackThinRectPiv{
+  transform: translate(5vw, 22vw) rotate(-60deg);
+}
+
+.blackThinRect{
+  position: absolute;
+  top: 0vw;
+  left: 0vw;
+  width: .6vw;
+  height: 60vw;
+  background-color: black
+}
+
+.dadaMouth{
+  position: absolute;
+  top: 28vw;
+  left: 5vw;
+  width: 18vw;
+  transform: translate(-21vw, -55vw) rotate(40deg);
+  height: 20vw;
+  background-image: url("mouth.png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  opacity: 0;
+
+}
+
+.coverTitle{
+  position: absolute;
+  top: 28vw;
+  left: 5vw;
+  width: 16vw;
+  transform: translate(18vw, -18vw) rotate(-15deg);
+  height: 10vw;
+  background-image: url(zeitGeistLogo.png);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+.round{
+  border-radius: 100%;
+}
+.red{
+  background-color: rgb(232,0,2);
+}
+.shadow{
+  box-shadow: 2px 4px 10px 1px rgba(0,0,0,.4);
+}
+
+.floatLeft{
+  float: left;
+  position: relative;
+}
+.trans{
+  transition: 1s;
 }

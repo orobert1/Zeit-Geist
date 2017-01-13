@@ -4,7 +4,6 @@ const Constants = require('../constants/constants');
 const ProjectStore = require('../stores/project_store');
 module.exports = {
   getAllProjects( filters ){
-
     ApiUtil.getAllProjects( filters, this.receiveProjectActions );
   },
 

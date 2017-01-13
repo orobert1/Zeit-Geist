@@ -6,8 +6,19 @@ const Constants = require('../constants/constants');
 const UserStore = new Store(AppDispatcher);
 
 UserStore.user = {};
+UserStore.userPage = {};
 
+UserStore.updateUserPage = function( user ){
+  this.userPage = user;
+}
 
+UserStore.getUserPage = function(){
+  return this.userPage
+}
+
+UserStore.resetUserPage = function(){
+  return this.userPage
+}
 
 UserStore.currentUser = function(){
   return this.user;
@@ -35,6 +46,10 @@ UserStore.__onDispatch = function(payload){
     this.removeUser();
     this.__emitChange();
     break;
+    case Constants.RECEIVEUSERPAGEUSER:
+    this.updateUserPage( payload.payload );
+    this.__emitChange();
+    break
   }
 };
 

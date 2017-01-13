@@ -63,13 +63,12 @@ module.exports = {
       }
     });
   },
-  getUser(id, la){
-
+  getUser(id, callback){
     $.ajax({
       url: `api/users/${id}`,
       method: 'GET',
       success(data){
-        la(data);
+        callback(data);
       }
     });
   },
