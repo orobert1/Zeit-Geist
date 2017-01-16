@@ -87,6 +87,10 @@ module.exports = React.createClass({
                               <div className = "dadaHand trans">
                                 <div className = "dadaMouth trans">
                                   <div className = "coverTitle trans"></div>
+                                  <div className = "logIn trans" onClick = { this.signIn }>Log In</div>
+                                  <div className = "signUp trans" onClick = { this.signUp } >Sign Up</div>
+                                  <div className = "here trans" onClick = { this.logInGuest } >Click Here!</div>
+
                                 </div>
                               </div>
                             </div>

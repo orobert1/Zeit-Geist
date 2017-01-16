@@ -143,13 +143,6 @@ input[type="submit"] {
   margin:0px;
   position:fixed;
 }
-.logIn{
-  float:right;
-  font-size:11pt;
-  margin:20px;
-  margin-right: 80px;
-
-}
 
 .logo {
   margin-top: 22px;
@@ -1489,7 +1482,7 @@ input {-webkit-appearance: none; box-shadow: none !important; }
   top: 22vh;
   left: 34vw;
   width: 28vw;
-  -webkit-transform: rotate(-4deg) scale( .8, .8);
+  -webkit-transform: rotate(-4deg) scale( 1, 1);
   height: 28vw;
   border: .6vw solid black;
 }
@@ -1647,7 +1640,7 @@ input {-webkit-appearance: none; box-shadow: none !important; }
   top: 28vw;
   left: 5vw;
   width: 18vw;
-  transform: translate(-21vw, -55vw) rotate(40deg);
+  transform: translate(-20vw, -55vw) rotate(40deg);
   height: 20vw;
   background-image: url("mouth.png");
   background-repeat: no-repeat;
@@ -1661,12 +1654,57 @@ input {-webkit-appearance: none; box-shadow: none !important; }
   top: 28vw;
   left: 5vw;
   width: 16vw;
-  transform: translate(18vw, -18vw) rotate(-15deg);
+  transform: translate(15vw, -18vw) rotate(-15deg);
   height: 10vw;
   background-image: url(zeitGeistLogo.png);
   background-repeat: no-repeat;
   background-size: 100% auto;
 }
+
+.logIn{
+  position: absolute;
+  top: 28vw;
+  left: 5vw;
+  width: 16vw;
+  transform: translate(26vw, 4vw) rotate(15deg);
+  height: 10vw;
+  -webkit-text-stroke: 1px rgb( 200,0,0 );
+  color: transparent;
+  font-weight: bold;
+  font-size: 25pt;
+}
+
+.signUp{
+  position: absolute;
+  top: 28vw;
+  left: 5vw;
+  width: 16vw;
+  transform: translate(42vw, 7vw) rotate(-10deg);
+  height: 10vw;
+  -webkit-text-stroke: 1px rgb( 200,0,0 );
+  color: transparent;
+  font-weight: bold;
+  font-size: 25pt;
+}
+
+.here{
+  position: absolute;
+  top: 28vw;
+  left: 5vw;
+  width: 16vw;
+  transform: translate(70vw, -12vw) rotate(20deg);
+  height: 10vw;
+  -webkit-text-stroke: 1px rgb( 200,0,0 );
+  color: transparent;
+  font-weight: bold;
+  font-size: 25pt;
+}
+
+.here:hover{
+  cursor: pointer;
+  background-color: red;
+}
+
 
 .round{
   border-radius: 100%;
