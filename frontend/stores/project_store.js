@@ -5,14 +5,23 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const ProjectStore = new Store(AppDispatcher);
 
-ProjectStore.allProjects = [];
+ProjectStore.allProjects = {};
 ProjectStore.project = {};
 ProjectStore.filter = {};
 ProjectStore.projectCreated = {}
+ProjectStore.projectsLength = 0;
 ProjectStore.createProject = false;
 
 ProjectStore.changeAllProjects = function( projects ){
-  this.allProjects = projects;
+  this.allProjects = {}
+  ProjectStore.projectsLength = 0;
+  for (var i = 0; i < projects.length; i++) {
+    if( !this.allProjects[ projects[i].project.id ] ){
+      this.allProjects[ projects[i].project.id ] = projects[i];
+      this.allProjects[ projects[i].project.id ].index = this.projectsLength;
+      this.projectsLength++;
+    }
+  }
 }
 
 ProjectStore.setCreateProjectTrue = function(){
@@ -28,7 +37,13 @@ ProjectStore.getProjectCreationStatus = function(){
 }
 
 ProjectStore.getAllProjects = function(){
-  return this.allProjects;
+  let keys = Object.keys( this.allProjects );
+  let projects = [];
+  for (var i = 0; i < keys.length; i++) {
+    let project = this.allProjects[ keys[i] ];
+    projects[project.index] = project
+  }
+  return projects
 }
 
 ProjectStore.reset = function(){
@@ -61,6 +76,16 @@ ProjectStore.setProjectCreated = function( project ){
 
 ProjectStore.getProjectCreated = function(){
   return this.projectCreated;
+}
+
+ProjectStore.addProjects = function( projects ){
+  for (var i = 0; i < projects.length; i++) {
+    if( !this.allProjects[ projects[i].project.id ] ){
+      this.allProjects[ projects[i].project.id ] = projects[i];
+      this.allProjects[ projects[i].project.id ].index = this.projectsLength;
+      this.projectsLength++;
+    }
+  }
 }
 
 ProjectStore.clearProjectCreated = function(){
@@ -104,6 +129,10 @@ ProjectStore.__onDispatch = function( payload ){
     break;
     case Constants.CLEARPROJECTCREATED:
     this.clearProjectCreated();
+    this.__emitChange();
+    break;
+    case Constants.MOREPROJECTS:
+    this.addProjects( payload.data );
     this.__emitChange();
     break;
 

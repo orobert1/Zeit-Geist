@@ -39,6 +39,8 @@ module.exports = React.createClass({
 
   __updateProjects(){
     let projects = ProjectStore.getAllProjects();
+    let randomProject = projects[Math.floor( Math.random() * ( projects.length - 1))]
+    $('.profilePicture').css({ backgroundImage: `url(${ randomProject.project.cover_image})` })
     this.setState({ projects: projects });
   },
 

@@ -31,13 +31,13 @@ class Project < ActiveRecord::Base
       @projects = Project.includes(:user).joins(:tags)
       .where("projects.created_at < ? AND tags.tagname IN (?)", date, tags)
       .order("created_at DESC")
-      .limit(30)
+      .limit(15)
       return @projects.map{|el| {user: el.user,project: el}}
     else
       @projects = Project.includes(:user)
       .where("created_at < ?", date)
       .order("created_at DESC")
-      .limit(30)
+      .limit(15)
       return @projects.map{|el| {user: el.user,project: el}}
     end
 
@@ -47,14 +47,14 @@ class Project < ActiveRecord::Base
     if tags
       @projects = Project.includes(:user).joins(:followers, :tags)
       .where("users.id = ? AND projects.created_at < ? AND tags.tagname IN (?)", current_user.id, date, tags)
-      .order("created_at DESC").limit(30)
+      .order("created_at DESC").limit(15)
       return @projects.map{|el|
         { user: el.user, project: el }
       }
     else
       @projects = Project.includes(:user, :tags).joins(:followers)
       .where("users.id = ? AND projects.created_at < ? ", current_user.id, date)
-      .order("created_at DESC").limit(30)
+      .order("created_at DESC").limit(15)
       return @projects.map{|el|
         { user: el.user, project: el }
       }
@@ -66,13 +66,13 @@ class Project < ActiveRecord::Base
       @projects = current_user.projects.joins( :tags )
       .where("projects.created_at < ? AND tags.tagname IN (?)", date, tags )
       .order("created_at DESC")
-      .limit(30)
+      .limit(15)
       return @projects.map{|el| {user: el.user,project: el}}
     else
       @projects = current_user.projects
       .where("created_at < ?", date)
       .order("created_at DESC")
-      .limit(30)
+      .limit(15)
       return @projects.map{|el| {user: el.user,project: el}}
     end
   end

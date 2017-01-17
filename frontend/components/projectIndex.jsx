@@ -32,6 +32,12 @@ module.exports = React.createClass({
     let projects = ProjectStore.getAllProjects();
     if( projects.length > 0 ){
       this.state.absoluteProjects.registerProjectLength( projects.length );
+      let payload = {
+        filter: ProjectStore.getCurrentFilter(),
+        date: projects[ projects.length - 1 ].project.created_at,
+        func: ProjectActions.getMoreProjects.bind( ProjectActions )
+      }
+      this.props.win.registerLast( payload );
     }
     this.setState({ projects: projects, offset: this.state.offset + projects.length });
 

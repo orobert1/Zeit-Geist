@@ -7,6 +7,10 @@ module.exports = {
     ApiUtil.getAllProjects( filters, this.receiveProjectActions );
   },
 
+  getMoreProjects( filters ){
+    ApiUtil.getAllProjects( filters, this.receiveMoreProjects );
+  },
+
   getProject( id ){
     ApiUtil.getProject( id, this.receiveProject )
   },
@@ -67,6 +71,13 @@ module.exports = {
   receiveProjectActions( data ){
     Dispatcher.dispatch({
       actionType: Constants.RECEIVE_PROJECTS,
+      data: data
+    })
+  },
+
+  receiveMoreProjects( data ){
+    Dispatcher.dispatch({
+      actionType: Constants.MOREPROJECTS,
       data: data
     })
   },

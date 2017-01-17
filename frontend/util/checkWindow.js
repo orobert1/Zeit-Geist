@@ -1,6 +1,7 @@
 let $ = require('jquery');
 function checkWindow(){
   this.elements = [];
+  this.lastElement = {};
 }
 
 checkWindow.prototype.registerElement = function( element, fun ){
@@ -29,6 +30,23 @@ checkWindow.prototype.run = function(){
       el.func( el.element );
       this.elements.splice( i, 1 );
     }
+  }
+  if( top > $(document).height() - ( $(window).height() + 100 ) ){
+    this.infiniteScroll();
+  }
+}
+
+checkWindow.prototype.registerLast = function( element ){
+  this.lastElement = element;
+}
+
+checkWindow.prototype.infiniteScroll = function(){
+  console.log(this.lastElement);
+  if( this.lastElement.date ){
+    this.lastElement.func( {
+      filter: this.lastElement.filter,
+      date: this.lastElement.date
+     });
   }
 }
 
