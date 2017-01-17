@@ -25,25 +25,22 @@ module.exports = React.createClass({
       username: this.state.username,
       password: this.state.password
     } );
-    window.setTimeout(function(){
-      this.context.router.push('/index');
-
-    }.bind( this ), 200);
 
   },
 
 
   render(){
     return(
-      <div className="log-in-container">
-        <form onSubmit={this.submit}>
-          <div className = "loginLabel" > Username </div>
-          <input type="text" value={this.state.username} onChange={this.updateUsername} className = "username" ></input>
-          <div className = "loginLabel" > Password </div>
-          <input type="password" value={this.state.password} onChange={this.updatePassword}  className = "password"></input>
-          <input type = "submit" className="sign-in" value="Sign In" ></input>
-        </form>
-        <Link to={"/new_user"} className="new-user">Create New User</Link>
+      <div className = "logInPage">
+        <div className="logInContainer">
+          <form onSubmit={this.submit}>
+            <div className = "logInLabel" > Username </div>
+            <input className = "userNameText" type="text" value={this.state.username} onChange={this.updateUsername} ></input>
+            <div className = "logInLabel" > Password </div>
+            <input className = "userNameText" type="password" value={this.state.password} onChange={this.updatePassword} ></input>
+            <input className = "logInLabel"type = "submit" className="signIn" value="Sign In" ></input>
+          </form>
+        </div>
       </div>
     );
   }

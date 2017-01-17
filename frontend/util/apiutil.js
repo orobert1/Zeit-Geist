@@ -50,14 +50,14 @@ module.exports = {
     });
   },
 
-  createUser(user, la){
+  createUser(user, callback){
 
     $.ajax({
       url: 'api/users',
       method: 'POST',
       data: {user: user},
       success(data){
-        la(data);
+        callback(data);
       },
       failure(err){
       }

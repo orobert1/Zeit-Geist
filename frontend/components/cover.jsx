@@ -1,10 +1,19 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const Grid = require('../util/grid');
+const LogIn = require('./login');
+const SignUp = require('./signup');
+
 
 module.exports = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
+  },
+
+  getInitialState(){
+    return({
+      user: "none"
+    })
   },
 
   componentDidMount(){
@@ -47,17 +56,27 @@ module.exports = React.createClass({
   },
 
   signIn(){
-    this.context.router.push('login');
+    this.setState({ user: "signIn" });
   },
 
   signUp(){
-    this.context.router.push('createUser');
+    this.setState({ user: "signUp" });
   },
 
   logInGuest(){
     $('html, body').animate({
         scrollTop: $("#projectIndex").offset().top + 1
     }, 200)
+  },
+
+  page(){
+    if( this.state.user === "signIn" ){
+      return( <LogIn remove = { this.remove } ></LogIn> );
+    }else if( this.state.user === "signUp" ){
+      return( <SignUp remove = { this.remove } ></SignUp> );
+    }else{
+      return( <div></div> )
+    }
   },
 
   render(){
@@ -89,7 +108,7 @@ module.exports = React.createClass({
                                   <div className = "coverTitle trans"></div>
                                   <div className = "logIn trans" onClick = { this.signIn }>Log In</div>
                                   <div className = "signUp trans" onClick = { this.signUp } >Sign Up</div>
-                                  <div className = "here trans" onClick = { this.logInGuest } >Click Here!</div>
+                                  <div className = "here trans" onClick = { this.logInGuest } >Guest!</div>
 
                                 </div>
                               </div>
@@ -106,6 +125,9 @@ module.exports = React.createClass({
           </div>
           <div id = "nose" className = "trans"></div>
         </div>
+        {
+          this.page()
+        }
       </div>
     )
   }

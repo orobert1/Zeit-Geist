@@ -41,9 +41,6 @@ absProject.prototype.addProject = function(){
         author.onclick = this.authorClick;
         project.id = this.id;
         project.onclick = this.click;
-        if( !this.click ){
-          debugger
-        }
         img.src = this.project.cover_image;
         project.className = "absoluteCont";
         if( target.css('width') === "0px" || target.css('width') === "" ){
@@ -85,6 +82,7 @@ absProject.prototype.reloadImage = function(){
   let target = $( document.getElementById(this.target) );
   if( target.position() ){
     $(project).css({ width: target.css('width') });
+
   }
 }
 

@@ -51,16 +51,7 @@ color:white;
 .sign-in-index-button{
 
 }
-input[type="text"]::before {
-  padding: 0 0 0 10px;
-  width: 290px;
-  margin: 10px 30px 10px;
-}
-input[type="password"] {
-  padding: 0 0 0 10px;
-  width: 290px;
-  margin: 10px 30px 10px;
-}
+
 .sign-in {
     width: 40px;
     margin: 10px 30px 10px;
@@ -967,7 +958,6 @@ strong{
 }
 
 .targetItem{
-  background-color: red;
   float: left;
   margin-bottom: 20px;
   margin-left: 40px;
@@ -1035,7 +1025,6 @@ strong{
   transition: .6s;
   display: block;
   box-shadow: 2px 3px 20px rgba(0,0,0,.8);
-  background-color: red;
 }
 
 .absoluteImg{
@@ -1702,9 +1691,25 @@ input {-webkit-appearance: none; box-shadow: none !important; }
 
 .here:hover{
   cursor: pointer;
-  background-color: red;
 }
 
+.logIn:hover{
+  cursor: pointer;
+}
+
+.logInPage{
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  background-color: black;
+  opacity: .95;
+  width: 100vw;
+  height: 100vh;
+}
+
+.signUp:hover{
+  cursor: pointer;
+}
 
 .round{
   border-radius: 100%;
@@ -1716,10 +1721,49 @@ input {-webkit-appearance: none; box-shadow: none !important; }
   box-shadow: 2px 4px 10px 1px rgba(0,0,0,.4);
 }
 
+.logInLabel{
+  clear: both;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  float: left;
+}
+
+.logInContainer{
+  float: left;
+  margin: 300px ;
+  background-color: white;
+  margin-left: 35%;
+  width: 400px;
+  border: 1px solid;
+}
+
+.userNameText{
+  clear: both;
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 10px;
+  float: left;
+}
+
 .floatLeft{
   float: left;
   position: relative;
 }
 .trans{
   transition: 1s;
+}
+.signIn {
+    width: 40px;
+    padding:10px 0px;
+    background-color:rgb(200,0,0);
+    border-radius:8px;
+    clear: both;
+    float: left;
+    color:white;
+    transition: .2s;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 50%;
+    margin-left: 25%;
 }
